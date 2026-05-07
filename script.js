@@ -1,6 +1,7 @@
 // TODO: 실제 내부 부지판단 툴 주소가 확정되면 이 값을 교체하세요.
-const INTERNAL_TOOL_URL = "http://localhost:8501";
+const INTERNAL_TOOL_URL = "https://power-site-scout-stable.vercel.app";
 const CONTACT_EMAIL = "windpks@gmail.com";
+const WEBTOON_ZOOM_STEPS = [1, 1.6, 2.2, 2.8];
 
 const contactMailTemplates = {
   collaboration: {
@@ -332,6 +333,7 @@ let selectedWebtoonPanelIndex = 0;
 let webtoonCarouselImages = [];
 let isWebtoonLightboxOpen = false;
 let isWebtoonZoomed = false;
+let webtoonZoomStepIndex = 0;
 let webtoonSwipeStart = null;
 let selectedOpeningSlideIndex = 0;
 let openingAutoplayId = null;
@@ -906,6 +908,97 @@ function setWebtoonZoom(shouldZoom) {
 
 function toggleWebtoonZoom() {
   setWebtoonZoom(!isWebtoonZoomed);
+}
+
+function getClampedWebtoonZoomStep(stepIndex) {
+  if (!Number.isFinite(stepIndex)) return 0;
+  return Math.min(Math.max(Math.round(stepIndex), 0), WEBTOON_ZOOM_STEPS.length - 1);
+}
+
+function getWebtoonZoomScale() {
+  return WEBTOON_ZOOM_STEPS[webtoonZoomStepIndex] || 1;
+}
+
+function getWebtoonScrollRatios() {
+  if (!webtoonLightboxFigure || !isWebtoonZoomed) return null;
+
+  return {
+    x: (webtoonLightboxFigure.scrollLeft + webtoonLightboxFigure.clientWidth / 2) / Math.max(webtoonLightboxFigure.scrollWidth, 1),
+    y: (webtoonLightboxFigure.scrollTop + webtoonLightboxFigure.clientHeight / 2) / Math.max(webtoonLightboxFigure.scrollHeight, 1),
+  };
+}
+
+function updateWebtoonZoomButton() {
+  const zoomScale = getWebtoonZoomScale();
+  const canZoomInMore = webtoonZoomStepIndex < WEBTOON_ZOOM_STEPS.length - 1;
+
+  webtoonLightboxZoom?.setAttribute("aria-pressed", String(isWebtoonZoomed));
+
+  if (!webtoonLightboxZoom) return;
+
+  if (!isWebtoonZoomed) {
+    webtoonLightboxZoom.textContent = "확대";
+    webtoonLightboxZoom.setAttribute("aria-label", "확대해서 보기");
+    webtoonLightboxZoom.setAttribute("title", "확대해서 보기");
+    return;
+  }
+
+  webtoonLightboxZoom.textContent = canZoomInMore ? "확대+" : "맞춤";
+  webtoonLightboxZoom.setAttribute(
+    "aria-label",
+    canZoomInMore ? `현재 ${zoomScale.toFixed(1)}배 확대, 더 확대하기` : `현재 ${zoomScale.toFixed(1)}배 확대, 화면에 맞춰 보기`,
+  );
+  webtoonLightboxZoom.setAttribute("title", `${zoomScale.toFixed(1)}x`);
+}
+
+function setWebtoonZoom(shouldZoom, requestedStepIndex = 1) {
+  const nextStepIndex = Boolean(shouldZoom) && isMobileLightboxViewport()
+    ? getClampedWebtoonZoomStep(requestedStepIndex)
+    : 0;
+  const previousRatios = getWebtoonScrollRatios();
+  const wasZoomed = isWebtoonZoomed;
+
+  webtoonZoomStepIndex = nextStepIndex;
+  isWebtoonZoomed = webtoonZoomStepIndex > 0;
+
+  webtoonLightbox?.classList.toggle("is-zoomed", isWebtoonZoomed);
+  webtoonLightbox?.style.setProperty("--webtoon-zoom-width", `${Math.round(getWebtoonZoomScale() * 100)}vw`);
+  updateWebtoonZoomButton();
+
+  if (!webtoonLightboxFigure) return;
+
+  if (!isWebtoonZoomed) {
+    webtoonLightboxFigure.scrollTop = 0;
+    webtoonLightboxFigure.scrollLeft = 0;
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    if (wasZoomed && previousRatios) {
+      webtoonLightboxFigure.scrollLeft = Math.max(
+        0,
+        previousRatios.x * webtoonLightboxFigure.scrollWidth - webtoonLightboxFigure.clientWidth / 2,
+      );
+      webtoonLightboxFigure.scrollTop = Math.max(
+        0,
+        previousRatios.y * webtoonLightboxFigure.scrollHeight - webtoonLightboxFigure.clientHeight / 2,
+      );
+      return;
+    }
+
+    webtoonLightboxFigure.scrollLeft = 0;
+    webtoonLightboxFigure.scrollTop = 0;
+  });
+}
+
+function toggleWebtoonZoom() {
+  if (!isMobileLightboxViewport()) return;
+
+  const nextStepIndex = isWebtoonZoomed
+    ? (webtoonZoomStepIndex + 1) % WEBTOON_ZOOM_STEPS.length
+    : 1;
+
+  setWebtoonZoom(nextStepIndex > 0, nextStepIndex);
 }
 
 function getActiveWebtoonItem() {
