@@ -315,6 +315,7 @@ let lastFocusedElement = null;
 let selectedWebtoonPanelIndex = 0;
 let webtoonCarouselImages = [];
 let isWebtoonLightboxOpen = false;
+let isWebtoonZoomed = false;
 let webtoonSwipeStart = null;
 let selectedOpeningSlideIndex = 0;
 let openingAutoplayId = null;
@@ -349,6 +350,7 @@ const webtoonLightboxPrev = document.querySelector("#webtoon-lightbox-prev");
 const webtoonLightboxNext = document.querySelector("#webtoon-lightbox-next");
 const webtoonLightboxPrevBottom = document.querySelector("#webtoon-lightbox-prev-bottom");
 const webtoonLightboxNextBottom = document.querySelector("#webtoon-lightbox-next-bottom");
+const webtoonLightboxZoom = document.querySelector("#webtoon-lightbox-zoom");
 
 function closeMobileNav() {
   if (!navToggle || !primaryNav) return;
@@ -799,6 +801,40 @@ function hydrateViewerAssets() {
   });
 }
 
+function isMobileLightboxViewport() {
+  return window.matchMedia("(max-width: 768px)").matches;
+}
+
+function setWebtoonZoom(shouldZoom) {
+  const nextZoomState = Boolean(shouldZoom) && isMobileLightboxViewport();
+  isWebtoonZoomed = nextZoomState;
+
+  webtoonLightbox?.classList.toggle("is-zoomed", isWebtoonZoomed);
+  webtoonLightboxZoom?.setAttribute("aria-pressed", String(isWebtoonZoomed));
+
+  if (webtoonLightboxZoom) {
+    webtoonLightboxZoom.textContent = isWebtoonZoomed ? "맞춤" : "확대";
+    webtoonLightboxZoom.setAttribute("aria-label", isWebtoonZoomed ? "화면에 맞춰 보기" : "확대해서 보기");
+  }
+
+  if (!webtoonLightboxFigure) return;
+
+  if (!isWebtoonZoomed) {
+    webtoonLightboxFigure.scrollTop = 0;
+    webtoonLightboxFigure.scrollLeft = 0;
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    webtoonLightboxFigure.scrollLeft = Math.max(0, (webtoonLightboxFigure.scrollWidth - webtoonLightboxFigure.clientWidth) / 2);
+    webtoonLightboxFigure.scrollTop = Math.max(0, (webtoonLightboxFigure.scrollHeight - webtoonLightboxFigure.clientHeight) / 2);
+  });
+}
+
+function toggleWebtoonZoom() {
+  setWebtoonZoom(!isWebtoonZoomed);
+}
+
 function getActiveWebtoonItem() {
   const item = briefingItems[selectedItemIndex];
   if (!item || !["opening", "webtoon-flow", "grid-bottleneck", "evidence-solution", "yeoju-case", "dogsim-esg", "business", "closing"].includes(item.layout)) return null;
@@ -811,6 +847,7 @@ function renderWebtoonLightbox() {
   const isFirstPage = selectedWebtoonPanelIndex === 0;
   const isLastPage = selectedWebtoonPanelIndex === webtoonCarouselImages.length - 1;
 
+  setWebtoonZoom(false);
   webtoonLightboxTitle.textContent = image.title;
   webtoonLightboxCount.textContent = `${padStep(selectedWebtoonPanelIndex + 1)} / ${padStep(webtoonCarouselImages.length)}`;
   webtoonLightboxPrev.disabled = isFirstPage;
@@ -868,6 +905,7 @@ function openWebtoonLightbox(index) {
 }
 
 function closeWebtoonLightbox() {
+  setWebtoonZoom(false);
   isWebtoonLightboxOpen = false;
   document.body.classList.remove("webtoon-lightbox-open");
   webtoonLightbox.classList.remove("is-webtoon-reader", "is-slide-reader");
@@ -1025,6 +1063,11 @@ webtoonLightboxPrev?.addEventListener("click", goWebtoonPrev);
 webtoonLightboxNext?.addEventListener("click", goWebtoonNext);
 webtoonLightboxPrevBottom?.addEventListener("click", goWebtoonPrev);
 webtoonLightboxNextBottom?.addEventListener("click", goWebtoonNext);
+webtoonLightboxZoom?.addEventListener("click", toggleWebtoonZoom);
+webtoonLightboxImage?.addEventListener("click", () => {
+  if (!isWebtoonLightboxOpen || !isMobileLightboxViewport()) return;
+  toggleWebtoonZoom();
+});
 
 webtoonLightboxFigure?.addEventListener("pointerdown", (event) => {
   webtoonSwipeStart = {
@@ -1035,6 +1078,11 @@ webtoonLightboxFigure?.addEventListener("pointerdown", (event) => {
 
 webtoonLightboxFigure?.addEventListener("pointerup", (event) => {
   if (!webtoonSwipeStart) return;
+  if (isWebtoonZoomed) {
+    webtoonSwipeStart = null;
+    return;
+  }
+
   const distanceX = event.clientX - webtoonSwipeStart.x;
   const distanceY = event.clientY - webtoonSwipeStart.y;
   webtoonSwipeStart = null;
@@ -1046,6 +1094,12 @@ webtoonLightboxFigure?.addEventListener("pointerup", (event) => {
   }
 
   goWebtoonPrev();
+});
+
+window.addEventListener("resize", () => {
+  if (isWebtoonZoomed && !isMobileLightboxViewport()) {
+    setWebtoonZoom(false);
+  }
 });
 
 document.addEventListener("keydown", (event) => {

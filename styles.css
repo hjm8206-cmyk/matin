@@ -2359,13 +2359,41 @@ body.webtoon-lightbox-open .webtoon-lightbox {
     max-height: calc(100dvh - 118px);
   }
 
+  .webtoon-lightbox:not(.is-zoomed) .webtoon-lightbox-figure img {
+    cursor: zoom-in;
+  }
+
+  .webtoon-lightbox.is-zoomed .webtoon-lightbox-figure,
+  .webtoon-lightbox.is-zoomed.is-webtoon-reader .webtoon-lightbox-figure,
+  .webtoon-lightbox.is-zoomed.is-slide-reader .webtoon-lightbox-figure {
+    align-items: start;
+    justify-items: start;
+    overflow: auto;
+    padding: 8px 12px;
+    overscroll-behavior: contain;
+    touch-action: pan-x pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .webtoon-lightbox.is-zoomed .webtoon-lightbox-figure img,
+  .webtoon-lightbox.is-zoomed.is-webtoon-reader .webtoon-lightbox-figure img,
+  .webtoon-lightbox.is-zoomed.is-slide-reader .webtoon-lightbox-figure img {
+    width: 160vw;
+    min-width: 150vw;
+    max-width: none;
+    max-height: none;
+    transform: none;
+    object-fit: contain;
+    cursor: zoom-out;
+  }
+
   .webtoon-side-nav {
     display: none;
   }
 
   .webtoon-lightbox-footer {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto auto 1fr;
     gap: 8px;
     padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
     background: rgba(5, 10, 18, 0.92);
@@ -2375,6 +2403,10 @@ body.webtoon-lightbox-open .webtoon-lightbox {
     min-height: 38px;
     padding: 0 12px;
     font-size: 13px;
+  }
+
+  .webtoon-zoom-toggle {
+    min-width: 58px;
   }
 }
 
