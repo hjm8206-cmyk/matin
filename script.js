@@ -1,5 +1,21 @@
 // TODO: 실제 내부 부지판단 툴 주소가 확정되면 이 값을 교체하세요.
-const INTERNAL_TOOL_URL = "http://192.168.219.102:8501";
+const INTERNAL_TOOL_URL = "http://localhost:8501";
+const CONTACT_EMAIL = "windpks@gmail.com";
+
+const contactMailTemplates = {
+  collaboration: {
+    subject: "데이터센터 플랫폼 협업 문의",
+    body: ["회사명:", "성함:", "연락처:", "협업 희망 분야:", "문의 내용:"].join("\n"),
+  },
+  investment: {
+    subject: "데이터센터 플랫폼 투자 문의",
+    body: ["회사명/기관명:", "성함:", "연락처:", "투자 검토 범위:", "문의 내용:"].join("\n"),
+  },
+  consulting: {
+    subject: "데이터센터 전력·입지 컨설팅 문의",
+    body: ["회사명:", "성함:", "연락처:", "검토 대상 부지/지역:", "필요한 컨설팅 범위:", "문의 내용:"].join("\n"),
+  },
+};
 
 const openingSlides = [
   {
@@ -764,8 +780,8 @@ function renderClosingContent(item) {
     <div class="viewer-closing">
       ${renderParagraphs(item.content)}
       <div class="hero-actions">
-        <a class="button primary" href="mailto:windpks@gmail.com">브리핑 문의</a>
-        <a class="button secondary" href="mailto:windpks@gmail.com">협력 검토 문의</a>
+        <a class="button primary" href="${buildContactMailto("collaboration")}">브리핑 문의</a>
+        <a class="button secondary" href="${buildContactMailto("collaboration")}">협력 검토 문의</a>
         <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
         <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">내부 부지판단 툴 열기</a>
       </div>
@@ -801,6 +817,63 @@ function hydrateViewerAssets() {
   });
 }
 
+function buildContactMailto(type) {
+  const template = contactMailTemplates[type];
+  if (!template) return `mailto:${CONTACT_EMAIL}`;
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(template.body)}`;
+}
+
+function hydrateContactMailLinks() {
+  document.querySelectorAll("[data-mailto-type]").forEach((link) => {
+    link.setAttribute("href", buildContactMailto(link.dataset.mailtoType));
+  });
+}
+
+function copyTextWithFallback(text) {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const didCopy = document.execCommand("copy");
+  textarea.remove();
+
+  if (!didCopy) {
+    return Promise.reject(new Error("Copy command failed"));
+  }
+
+  return Promise.resolve();
+}
+
+function bindEmailCopyButtons() {
+  const status = document.querySelector("#copy-email-status");
+
+  document.querySelectorAll("[data-copy-email]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      try {
+        await copyTextWithFallback(button.dataset.copyEmail || CONTACT_EMAIL);
+        if (status) {
+          status.textContent = "이메일 주소가 복사되었습니다";
+          status.classList.add("is-visible");
+          window.setTimeout(() => status.classList.remove("is-visible"), 2600);
+        }
+      } catch {
+        if (status) {
+          status.textContent = "복사할 수 없습니다. 이메일 주소를 직접 선택해 주세요.";
+          status.classList.add("is-visible");
+        }
+      }
+    });
+  });
+}
+
 function isMobileLightboxViewport() {
   return window.matchMedia("(max-width: 768px)").matches;
 }
@@ -826,8 +899,8 @@ function setWebtoonZoom(shouldZoom) {
   }
 
   window.requestAnimationFrame(() => {
-    webtoonLightboxFigure.scrollLeft = Math.max(0, (webtoonLightboxFigure.scrollWidth - webtoonLightboxFigure.clientWidth) / 2);
-    webtoonLightboxFigure.scrollTop = Math.max(0, (webtoonLightboxFigure.scrollHeight - webtoonLightboxFigure.clientHeight) / 2);
+    webtoonLightboxFigure.scrollLeft = 0;
+    webtoonLightboxFigure.scrollTop = 0;
   });
 }
 
@@ -989,6 +1062,8 @@ preloadOpeningSlides();
 renderOpeningIntro();
 startOpeningAutoplay();
 renderCatalog();
+hydrateContactMailLinks();
+bindEmailCopyButtons();
 
 navToggle?.addEventListener("click", () => {
   const isOpen = navToggle.getAttribute("aria-expanded") === "true";

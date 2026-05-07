@@ -1008,6 +1008,74 @@ body.viewer-open .site-footer {
   width: 100%;
 }
 
+.contact-email-box {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin: 20px auto 0;
+  color: #b5c6d6;
+  text-align: center;
+}
+
+.contact-email-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-email-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(158, 205, 241, 0.16);
+  border-radius: 999px;
+  background: rgba(7, 16, 29, 0.62);
+  padding: 6px 7px 6px 14px;
+}
+
+.contact-email-row a {
+  color: #e5f5ff;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.email-copy-button {
+  min-height: 32px;
+  border: 1px solid rgba(118, 220, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(118, 220, 255, 0.1);
+  color: #dff7ff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 720;
+  padding: 0 12px;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.email-copy-button:hover,
+.email-copy-button:focus-visible {
+  border-color: rgba(118, 220, 255, 0.48);
+  background: rgba(118, 220, 255, 0.16);
+  outline: none;
+}
+
+.copy-email-status {
+  min-height: 20px;
+  color: var(--cyan);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.copy-email-status.is-visible {
+  opacity: 1;
+}
+
 .closing-secondary-action {
   display: flex;
   justify-content: center;
@@ -1977,6 +2045,23 @@ body.webtoon-lightbox-open .webtoon-lightbox {
     min-height: 0;
   }
 
+  .contact-email-row {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+    border-radius: var(--radius);
+    padding: 12px;
+  }
+
+  .contact-email-row a {
+    overflow-wrap: anywhere;
+  }
+
+  .email-copy-button {
+    width: 100%;
+    min-height: 40px;
+  }
+
   .topic-inner,
   .viewer-two-column,
   .viewer-card-grid,
@@ -2366,10 +2451,13 @@ body.webtoon-lightbox-open .webtoon-lightbox {
   .webtoon-lightbox.is-zoomed .webtoon-lightbox-figure,
   .webtoon-lightbox.is-zoomed.is-webtoon-reader .webtoon-lightbox-figure,
   .webtoon-lightbox.is-zoomed.is-slide-reader .webtoon-lightbox-figure {
+    display: block;
     align-items: start;
     justify-items: start;
+    justify-content: flex-start;
     overflow: auto;
     padding: 8px 12px;
+    text-align: left;
     overscroll-behavior: contain;
     touch-action: pan-x pan-y pinch-zoom;
     -webkit-overflow-scrolling: touch;
@@ -2382,7 +2470,11 @@ body.webtoon-lightbox-open .webtoon-lightbox {
     min-width: 150vw;
     max-width: none;
     max-height: none;
+    display: block;
+    position: static;
+    margin: 0;
     transform: none;
+    transform-origin: top left;
     object-fit: contain;
     cursor: zoom-out;
   }
