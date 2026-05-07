@@ -1,5 +1,5 @@
 // TODO: 실제 내부 부지판단 툴 주소가 확정되면 이 값을 교체하세요.
-const INTERNAL_TOOL_URL = "http://localhost:8501";
+const INTERNAL_TOOL_URL = "http://192.168.219.102:8501";
 
 const openingSlides = [
   {
