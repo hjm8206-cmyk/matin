@@ -1852,11 +1852,11 @@ body.webtoon-lightbox-open .webtoon-lightbox {
   }
 
   .opening-intro {
-    min-height: calc(100svh - var(--header-height));
+    min-height: auto;
     place-items: start center;
     align-content: start;
     padding-top: clamp(20px, 6svh, 44px);
-    padding-bottom: 24px;
+    padding-bottom: 14px;
   }
 
   .opening-frame {
