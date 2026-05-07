@@ -2160,6 +2160,88 @@ body.webtoon-lightbox-open .webtoon-lightbox {
   }
 }
 
+@media (max-width: 768px) {
+  .opening-frame {
+    overflow: visible;
+    margin-bottom: 104px;
+  }
+
+  .opening-slides {
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .opening-nav {
+    bottom: -52px;
+    width: 34px;
+    height: 34px;
+    background: rgba(4, 9, 17, 0.54);
+  }
+
+  .opening-nav::before {
+    inset: 12px 11px;
+  }
+
+  .opening-nav.prev {
+    left: 0;
+  }
+
+  .opening-nav.next {
+    right: 0;
+  }
+
+  .opening-skip {
+    top: auto;
+    right: 0;
+    bottom: -98px;
+    min-height: 28px;
+    padding: 0 9px;
+    font-size: 11px;
+    background: rgba(4, 9, 17, 0.58);
+  }
+
+  .opening-controls {
+    left: 42px;
+    right: 42px;
+    bottom: -54px;
+    grid-template-columns: auto minmax(54px, 1fr) auto;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 6px 8px;
+    background: rgba(3, 8, 16, 0.56);
+  }
+
+  .opening-count {
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+  }
+
+  .opening-indicators {
+    gap: 4px;
+  }
+
+  .opening-indicators button {
+    height: 12px;
+  }
+
+  .opening-indicators span {
+    height: 2px;
+  }
+
+  .opening-indicators button.is-active span {
+    height: 3px;
+  }
+
+  .opening-start {
+    grid-column: auto;
+    width: auto;
+    min-height: 28px;
+    padding: 0 9px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
