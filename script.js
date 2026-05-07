@@ -764,8 +764,8 @@ function renderClosingContent(item) {
     <div class="viewer-closing">
       ${renderParagraphs(item.content)}
       <div class="hero-actions">
-        <a class="button primary" href="mailto:contact@example.com">브리핑 문의</a>
-        <a class="button secondary" href="mailto:contact@example.com">협력 검토 문의</a>
+        <a class="button primary" href="mailto:windpks@gmail.com">브리핑 문의</a>
+        <a class="button secondary" href="mailto:windpks@gmail.com">협력 검토 문의</a>
         <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
         <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">내부 부지판단 툴 열기</a>
       </div>
