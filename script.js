@@ -1,7 +1,8 @@
 // TODO: 실제 내부 부지판단 툴 주소가 확정되면 이 값을 교체하세요.
-const INTERNAL_TOOL_URL = "https://power-site-scout-stable.vercel.app";
+const INTERNAL_TOOL_URL = "https://power-site-scout-os-new.vercel.app";
 const CONTACT_EMAIL = "windpks@gmail.com";
-const WEBTOON_ZOOM_STEPS = [1, 1.6, 2.2, 2.8];
+const WEBTOON_MIN_ZOOM = 1;
+const WEBTOON_MAX_ZOOM = 4;
 
 const contactMailTemplates = {
   collaboration: {
@@ -334,6 +335,9 @@ let webtoonCarouselImages = [];
 let isWebtoonLightboxOpen = false;
 let isWebtoonZoomed = false;
 let webtoonZoomStepIndex = 0;
+let webtoonZoomScale = 1;
+let webtoonPinchState = null;
+let webtoonSuppressSwipeUntil = 0;
 let webtoonSwipeStart = null;
 let selectedOpeningSlideIndex = 0;
 let openingAutoplayId = null;
@@ -910,13 +914,13 @@ function toggleWebtoonZoom() {
   setWebtoonZoom(!isWebtoonZoomed);
 }
 
-function getClampedWebtoonZoomStep(stepIndex) {
-  if (!Number.isFinite(stepIndex)) return 0;
-  return Math.min(Math.max(Math.round(stepIndex), 0), WEBTOON_ZOOM_STEPS.length - 1);
+function getClampedWebtoonZoomScale(scale) {
+  if (!Number.isFinite(scale)) return WEBTOON_MIN_ZOOM;
+  return Math.min(Math.max(scale, WEBTOON_MIN_ZOOM), WEBTOON_MAX_ZOOM);
 }
 
 function getWebtoonZoomScale() {
-  return WEBTOON_ZOOM_STEPS[webtoonZoomStepIndex] || 1;
+  return webtoonZoomScale;
 }
 
 function getWebtoonScrollRatios() {
@@ -930,7 +934,7 @@ function getWebtoonScrollRatios() {
 
 function updateWebtoonZoomButton() {
   const zoomScale = getWebtoonZoomScale();
-  const canZoomInMore = webtoonZoomStepIndex < WEBTOON_ZOOM_STEPS.length - 1;
+  const canZoomInMore = false;
 
   webtoonLightboxZoom?.setAttribute("aria-pressed", String(isWebtoonZoomed));
 
@@ -951,18 +955,19 @@ function updateWebtoonZoomButton() {
   webtoonLightboxZoom.setAttribute("title", `${zoomScale.toFixed(1)}x`);
 }
 
-function setWebtoonZoom(shouldZoom, requestedStepIndex = 1) {
-  const nextStepIndex = Boolean(shouldZoom) && isMobileLightboxViewport()
-    ? getClampedWebtoonZoomStep(requestedStepIndex)
-    : 0;
+function setWebtoonZoom(shouldZoom, requestedScale = WEBTOON_MIN_ZOOM, options = {}) {
+  const nextScale = Boolean(shouldZoom) && isMobileLightboxViewport()
+    ? getClampedWebtoonZoomScale(requestedScale)
+    : WEBTOON_MIN_ZOOM;
   const previousRatios = getWebtoonScrollRatios();
   const wasZoomed = isWebtoonZoomed;
 
-  webtoonZoomStepIndex = nextStepIndex;
-  isWebtoonZoomed = webtoonZoomStepIndex > 0;
+  webtoonZoomScale = nextScale;
+  webtoonZoomStepIndex = 0;
+  isWebtoonZoomed = webtoonZoomScale > WEBTOON_MIN_ZOOM + 0.01;
 
   webtoonLightbox?.classList.toggle("is-zoomed", isWebtoonZoomed);
-  webtoonLightbox?.style.setProperty("--webtoon-zoom-width", `${Math.round(getWebtoonZoomScale() * 100)}vw`);
+  webtoonLightbox?.style.setProperty("--webtoon-zoom-width", `${Math.round(webtoonZoomScale * 100)}vw`);
   updateWebtoonZoomButton();
 
   if (!webtoonLightboxFigure) return;
@@ -974,6 +979,13 @@ function setWebtoonZoom(shouldZoom, requestedStepIndex = 1) {
   }
 
   window.requestAnimationFrame(() => {
+    if (options.anchor && options.startScale) {
+      const scaleRatio = webtoonZoomScale / Math.max(options.startScale, 0.01);
+      webtoonLightboxFigure.scrollLeft = Math.max(0, options.anchor.x * scaleRatio - options.center.x);
+      webtoonLightboxFigure.scrollTop = Math.max(0, options.anchor.y * scaleRatio - options.center.y);
+      return;
+    }
+
     if (wasZoomed && previousRatios) {
       webtoonLightboxFigure.scrollLeft = Math.max(
         0,
@@ -992,13 +1004,64 @@ function setWebtoonZoom(shouldZoom, requestedStepIndex = 1) {
 }
 
 function toggleWebtoonZoom() {
-  if (!isMobileLightboxViewport()) return;
+  setWebtoonZoom(false);
+}
 
-  const nextStepIndex = isWebtoonZoomed
-    ? (webtoonZoomStepIndex + 1) % WEBTOON_ZOOM_STEPS.length
-    : 1;
+function getTouchDistance(touches) {
+  const [first, second] = touches;
+  return Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+}
 
-  setWebtoonZoom(nextStepIndex > 0, nextStepIndex);
+function getTouchCenter(touches) {
+  const [first, second] = touches;
+  return {
+    x: (first.clientX + second.clientX) / 2,
+    y: (first.clientY + second.clientY) / 2,
+  };
+}
+
+function startWebtoonPinch(event) {
+  if (!isWebtoonLightboxOpen || !isMobileLightboxViewport() || event.touches.length < 2 || !webtoonLightboxFigure) return;
+
+  const center = getTouchCenter(event.touches);
+  const bounds = webtoonLightboxFigure.getBoundingClientRect();
+  const localCenter = {
+    x: center.x - bounds.left,
+    y: center.y - bounds.top,
+  };
+
+  webtoonPinchState = {
+    startDistance: Math.max(getTouchDistance(event.touches), 1),
+    startScale: webtoonZoomScale,
+    center: localCenter,
+    anchor: {
+      x: webtoonLightboxFigure.scrollLeft + localCenter.x,
+      y: webtoonLightboxFigure.scrollTop + localCenter.y,
+    },
+  };
+  webtoonSwipeStart = null;
+  webtoonSuppressSwipeUntil = Date.now() + 350;
+}
+
+function updateWebtoonPinch(event) {
+  if (!webtoonPinchState || event.touches.length < 2) return;
+
+  event.preventDefault();
+  const nextScale = getClampedWebtoonZoomScale(
+    webtoonPinchState.startScale * (getTouchDistance(event.touches) / webtoonPinchState.startDistance),
+  );
+
+  setWebtoonZoom(nextScale > WEBTOON_MIN_ZOOM + 0.01, nextScale, {
+    anchor: webtoonPinchState.anchor,
+    center: webtoonPinchState.center,
+    startScale: webtoonPinchState.startScale,
+  });
+}
+
+function endWebtoonPinch() {
+  if (!webtoonPinchState) return;
+  webtoonPinchState = null;
+  webtoonSuppressSwipeUntil = Date.now() + 350;
 }
 
 function getActiveWebtoonItem() {
@@ -1232,12 +1295,14 @@ webtoonLightboxNext?.addEventListener("click", goWebtoonNext);
 webtoonLightboxPrevBottom?.addEventListener("click", goWebtoonPrev);
 webtoonLightboxNextBottom?.addEventListener("click", goWebtoonNext);
 webtoonLightboxZoom?.addEventListener("click", toggleWebtoonZoom);
-webtoonLightboxImage?.addEventListener("click", () => {
-  if (!isWebtoonLightboxOpen || !isMobileLightboxViewport()) return;
-  toggleWebtoonZoom();
-});
+
+webtoonLightboxFigure?.addEventListener("touchstart", startWebtoonPinch, { passive: true });
+webtoonLightboxFigure?.addEventListener("touchmove", updateWebtoonPinch, { passive: false });
+webtoonLightboxFigure?.addEventListener("touchend", endWebtoonPinch, { passive: true });
+webtoonLightboxFigure?.addEventListener("touchcancel", endWebtoonPinch, { passive: true });
 
 webtoonLightboxFigure?.addEventListener("pointerdown", (event) => {
+  if (Date.now() < webtoonSuppressSwipeUntil) return;
   webtoonSwipeStart = {
     x: event.clientX,
     y: event.clientY,
@@ -1246,6 +1311,11 @@ webtoonLightboxFigure?.addEventListener("pointerdown", (event) => {
 
 webtoonLightboxFigure?.addEventListener("pointerup", (event) => {
   if (!webtoonSwipeStart) return;
+  if (Date.now() < webtoonSuppressSwipeUntil) {
+    webtoonSwipeStart = null;
+    return;
+  }
+
   if (isWebtoonZoomed) {
     webtoonSwipeStart = null;
     return;
