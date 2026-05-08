@@ -6,15 +6,15 @@ const WEBTOON_MAX_ZOOM = 4;
 
 const contactMailTemplates = {
   collaboration: {
-    subject: "AI 데이터센터 선행개발 플랫폼 사업협력 문의",
+    subject: "데이터센터 플랫폼 협업 문의",
     body: ["회사명:", "성함:", "연락처:", "협업 희망 분야:", "문의 내용:"].join("\n"),
   },
   investment: {
-    subject: "AI 데이터센터 선행개발 플랫폼 투자 문의",
+    subject: "데이터센터 플랫폼 투자 문의",
     body: ["회사명/기관명:", "성함:", "연락처:", "투자 검토 범위:", "문의 내용:"].join("\n"),
   },
   consulting: {
-    subject: "전력입지·데이터센터 선행개발 컨설팅 문의",
+    subject: "데이터센터 플랫폼 컨설팅 문의",
     body: ["회사명:", "성함:", "연락처:", "검토 대상 부지/지역:", "필요한 컨설팅 범위:", "문의 내용:"].join("\n"),
   },
 };
@@ -58,30 +58,30 @@ const briefingItems = [
   {
     id: 1,
     step: "01",
-    title: "AI 데이터센터와 전력병목",
-    subtitle: "AI 데이터센터 선행개발 플랫폼",
-    type: "플랫폼 소개",
+    title: "오프닝 슬라이드",
+    subtitle: "AI 시대, 데이터센터는 새로운 사회 인프라다",
+    type: "영상",
     layout: "opening",
     assetPath: "public/assets/webtoon/opening-briefing/",
-    summary: "AI 데이터센터가 왜 전력입지 기반 사회 인프라로 전환되는지 소개합니다.",
+    summary: "AI가 왜 데이터센터라는 물리 인프라로 이어지는지 여는 자료입니다.",
     content: [
       "AI는 산업 운영의 기반 기술로 확장되고 있습니다.",
       "공장, 자동차, 의료, 물류, 교육, 로봇, 도시 운영까지 모든 산업의 뒤편에서 데이터센터 수요가 커지고 있습니다.",
-      "AI 데이터센터의 경쟁력은 전력입지와 제도검토를 선행 설계하는 능력에서 시작됩니다.",
+      "AI를 움직이는 물리적 기반은 결국 데이터센터입니다.",
     ],
     highlight:
-      "전력입지, 제도검토, 후보지 스크리닝, 지역상생 ESG 구조를 통합해 AI 데이터센터 개발의 앞단 병목을 해결합니다.",
+      "우리는 데이터센터를 전기만 쓰는 시설이 아니라, 전력·입지·지역상생·ESG를 함께 설계하는 플랫폼으로 다시 정의합니다.",
     panelCount: 5,
   },
   {
     id: 2,
     step: "02",
-    title: "전력입지 문제",
+    title: "1부: 왜 전력이 핵심인가",
     subtitle: "AI 확산은 데이터센터 전력 병목으로 이어집니다",
-    type: "시각 브리핑",
+    type: "브리핑",
     layout: "webtoon-flow",
     assetPath: "public/assets/webtoon/power-bottleneck/",
-    summary: "AI 확산, 데이터센터 집적, 전력 병목, 송전축 전략의 연결 구조를 설명합니다.",
+    summary: "AI, 데이터센터, 전력 병목, 송전축 전략의 연결을 시각적으로 설명합니다.",
     content: [
       "AI가 커진다",
       "데이터센터가 커진다",
@@ -94,9 +94,9 @@ const briefingItems = [
   {
     id: 3,
     step: "03",
-    title: "기존 입지 방식의 한계",
+    title: "2부: 병목은 어디인가",
     subtitle: "병목은 단순 부동산이 아니라 전력 인입 구조에 있습니다",
-    type: "시각 브리핑",
+    type: "브리핑",
     layout: "grid-bottleneck",
     assetPath: "public/assets/webtoon/grid-bottleneck/",
     summary: "기존 변전소 잔여용량 관점의 한계와 송전선로 인입 구조를 정리합니다.",
@@ -112,12 +112,12 @@ const briefingItems = [
   {
     id: 4,
     step: "04",
-    title: "제도·전력계통 검토",
+    title: "근거자료",
     subtitle: "시장은 이미 전력 병목을 중심으로 움직이고 있습니다",
-    type: "검토체계",
+    type: "근거자료",
     layout: "evidence",
     assetPath: "public/assets/docs/evidence/",
-    summary: "시장·정책·제도 변화를 핵심 쟁점 중심으로 정리합니다.",
+    summary: "시장·정책·제도 변화를 카드형 요약으로 정리합니다.",
     content: [
       "글로벌 데이터센터 전력수요 증가",
       "국내 데이터센터 전력계통영향평가 병목",
@@ -153,12 +153,12 @@ const briefingItems = [
   {
     id: 6,
     step: "06",
-    title: "여주 401MW 실증 케이스",
-    subtitle: "전력입지·부지제공·제도검토를 실제 사업 트랙으로 연결한 앵커 사례",
-    type: "실증 케이스",
+    title: "여주 1호 실증 케이스",
+    subtitle: "여주 1호 — 룰북이 실제 절차에 올라탄 실증 트랙",
+    type: "실증",
     layout: "yeoju-case",
     assetPath: "public/assets/webtoon/yeoju-case/",
-    summary: "여주 401MW 케이스는 전력입지, 부지제공, 제도검토, 지역상생 구조를 실제 사업 트랙으로 연결한 앵커 사례입니다.",
+    summary: "기술검토 및 제도정렬 트랙에 진입한 여주 1호 케이스를 설명합니다.",
     content: [
       "여주 401MW 케이스는 단순한 토지 소개가 아닙니다.",
       "345kV급 대용량 수전 가능성을 전제로, 부지제공형 신설 변전소·개폐소·송전선로 연계 시나리오를 실제 전력계통영향평가 기술검토 트랙에 올린 실증 케이스입니다.",
@@ -175,26 +175,26 @@ const briefingItems = [
   {
     id: 7,
     step: "07",
-    title: "전력입지 후보지 자동검토툴",
-    subtitle: "전력축·입지·규제요소 기반 1차 스크리닝 체계",
-    type: "검토체계",
+    title: "전력부지 자동검토툴",
+    subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+    type: "검토툴",
     layout: "app",
     assetPath: INTERNAL_TOOL_URL,
-    summary: "전력축, 접도, 용도지역, 민가, 경사도, 정책입지, 규제요소 등을 기준으로 AI 데이터센터 후보지를 1차 스크리닝하는 자체 검토체계입니다.",
+    summary: "전력부지 자동검토툴은 외부 링크로만 연결합니다.",
     content: [
-      "전력축, 접도, 용도지역, 민가, 경사도, 정책입지, 규제요소 등을 기준으로 AI 데이터센터 후보지를 1차 스크리닝하는 자체 검토체계입니다.",
-      "데이터센터 후보지의 전력입지 가능성과 개발 리스크를 빠르게 분류하기 위한 내부 검토체계입니다.",
+      "전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 전력부지 자동검토툴입니다.",
+      "여주에서 룰이 정렬되면, 같은 기준으로 다음 후보지를 반복 발굴할 수 있습니다.",
     ],
   },
   {
     id: 8,
     step: "08",
-    title: "폐열활용·지역상생 ESG 모델",
-    subtitle: "데이터센터를 지역사회와 결합된 인프라로 전환하는 운영모델",
-    type: "ESG 모델",
+    title: "독심프로젝트 / ESG",
+    subtitle: "독심프로젝트는 주변사업이 아니라 하이터치 운영모델입니다",
+    type: "ESG",
     layout: "dogsim-esg",
     assetPath: "public/assets/webtoon/dogsim-esg/",
-    summary: "폐열활용, 지역특산 연계, 반려견 복지, 유기견 케어, 점주 상생 모델을 통해 데이터센터를 지역사회와 결합된 인프라로 전환합니다.",
+    summary: "데이터센터 폐열을 지역산업, 반려견 복지, 유기견 케어, 지역상생, ESG 운영모델로 연결하는 구조를 설명합니다.",
     content: [
       "데이터센터 폐열을 지역특산품 제조, 반려견 급식팩, 유기견 보호, 반려견 리조트, 지역 식당·카페·호프집 상생 구조와 연결합니다.",
       "이 운영모델은 주민수용성·ESG·지역상생·비기술 경쟁력을 보강하는 하이터치 구조입니다.",
@@ -210,16 +210,16 @@ const briefingItems = [
   {
     id: 9,
     step: "09",
-    title: "SPC 사업구조와 수익모델",
-    subtitle: "선행개발 권리화와 반복 확장 구조",
+    title: "사업구조 / 수익구조",
+    subtitle: "우리는 데이터센터 하나가 아니라 반복 확장 구조를 만듭니다",
     type: "사업구조",
     layout: "business",
     assetPath: "public/assets/slides/business-structure/",
-    summary: "SPV·SPC 구조를 기반으로 전력입지, 룰북, 후보지 검토체계, ESG 운영모델을 권리화하고 반복 가능한 데이터센터 선행개발 모델로 확장합니다.",
+    summary: "여주 실증, 룰북/IP, 전력부지 자동검토툴, ESG 운영모델, SPV 구조의 반복 확장을 보여줍니다.",
     content: [
       "여주 401MW 실증 케이스",
       "전력진입 룰북/IP",
-      "후보지 검토체계",
+      "전력부지 자동검토툴",
       "지역상생/ESG 운영모델",
       "SPV 중심 권리 보유",
       "각 호수별 SPC/JV 확장",
@@ -229,14 +229,14 @@ const briefingItems = [
   {
     id: 10,
     step: "10",
-    title: "플랫폼 차별점",
-    subtitle: "전력입지 기반 AI 데이터센터 선행개발 플랫폼",
-    type: "공식 안내",
+    title: "마무리 / 당사의 차별점",
+    subtitle: "선행과 끝단을 함께 책임지는 데이터센터 플랫폼",
+    type: "CTA",
     layout: "closing",
     assetPath: "public/assets/slides/closing-difference/",
-    summary: "전력입지 룰북, 후보지 검토체계, 지역상생 ESG 운영모델을 통합한 당사의 선행개발 역량을 정리합니다.",
+    summary: "전력입지 룰북, 전력부지 자동검토툴, 지역상생 ESG 운영모델을 통합한 당사의 역량을 정리합니다.",
     content: [
-      "당사는 단순 데이터센터 개발사가 아니라, 전력입지 발굴과 제도 정렬, 선행개발, ESG 운영까지 통합적으로 수행하는 선행개발 플랫폼입니다.",
+      "당사는 단순 데이터센터 개발사가 아닙니다. 전력이 가능한 부지를 발굴하고, 제도·기술검토·지역수용성까지 통과 가능한 구조를 설계하는 데이터센터 플랫폼입니다.",
     ],
     panelCount: 1,
   },
@@ -245,12 +245,12 @@ const briefingItems = [
 const combinedEvidenceSolutionItem = {
   id: 4,
   step: "04",
-  title: "제도 근거와 해법 구조",
-  subtitle: "전력계통영향평가 핵심 쟁점",
-  type: "시각 브리핑",
+  title: "3부: 병목의 증거와 현실적 해법",
+  subtitle: "근거자료와 해법 구조",
+  type: "브리핑",
   layout: "evidence-solution",
   assetPath: "public/assets/webtoon/evidence-solution/",
-  summary: "복잡한 전력·입지·제도 구조를 기업과 투자자가 직관적으로 이해할 수 있도록 구성한 시각 브리핑 자료입니다.",
+  summary: "병목의 증거, 제도 변화, 통과율 현실, 송전망 지연, 기존 송전축 인근 부지제공형 신설변전소 해법을 한 흐름으로 설명합니다.",
   content: [
     "제도 근거와 현실적 해법 구조",
     "제도는 차단이 아니라 적정 배치로 움직이고 있습니다.",
@@ -276,26 +276,26 @@ function applyBriefingSequence() {
 
     if (item.layout === "yeoju-case") {
       Object.assign(item, {
-        title: "여주 401MW 실증 케이스",
-        subtitle: "전력입지·부지제공·제도검토를 실제 사업 트랙으로 연결한 앵커 사례",
-        type: "실증 케이스",
+        title: "여주 1호 실증 케이스",
+        subtitle: "여주 1호 — 룰북이 실제 절차에 올라탄 실증 트랙",
+        type: "실증",
         summary:
-          "여주 401MW 케이스는 전력입지, 부지제공, 제도검토, 지역상생 구조를 실제 사업 트랙으로 연결한 앵커 사례입니다.",
+          "기술검토 및 제도정렬 트랙에 진입한 여주 1호 케이스를 설명합니다.",
         panelCount: 10,
       });
     }
 
     if (item.layout === "app") {
       Object.assign(item, {
-        title: "전력입지 후보지 자동검토툴",
-        subtitle: "전력축·입지·규제요소 기반 1차 스크리닝 체계",
-        type: "검토체계",
+        title: "전력부지 자동검토툴",
+        subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+        type: "검토툴",
         assetPath: INTERNAL_TOOL_URL,
         visualPath: "public/assets/slides/app-demo/analysis-result.png",
         summary:
-          "전력축, 접도, 용도지역, 민가, 경사도, 정책입지, 규제요소 등을 기준으로 AI 데이터센터 후보지를 1차 스크리닝하는 자체 검토체계입니다.",
+          "전력부지 자동검토툴은 외부 링크로만 연결합니다.",
         content: [
-          "데이터센터 후보지의 전력입지 가능성과 개발 리스크를 빠르게 분류하기 위한 내부 검토체계입니다.",
+          "전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 전력부지 자동검토툴입니다.",
           "페이지 안에 기능을 구현하지 않고, 별도 링크로 연결합니다.",
         ],
       });
@@ -303,24 +303,24 @@ function applyBriefingSequence() {
 
     if (item.layout === "dogsim-esg") {
       Object.assign(item, {
-        title: "폐열활용·지역상생 ESG 모델",
-        subtitle: "데이터센터를 지역사회와 결합된 인프라로 전환하는 운영모델",
-        type: "ESG 모델",
+        title: "독심프로젝트 / ESG",
+        subtitle: "독심프로젝트는 주변사업이 아니라 하이터치 운영모델입니다",
+        type: "ESG",
         assetPath: "public/assets/webtoon/dogsim-esg/",
         summary:
-          "폐열활용, 지역특산 연계, 반려견 복지, 유기견 케어, 점주 상생 모델을 통해 데이터센터를 지역사회와 결합된 인프라로 전환합니다.",
+          "데이터센터 폐열을 지역산업, 반려견 복지, 유기견 케어, 지역상생, ESG 운영모델로 연결하는 구조를 설명합니다.",
         panelCount: 10,
       });
     }
 
     if (item.layout === "business") {
       Object.assign(item, {
-        title: "SPC 사업구조와 수익모델",
-        subtitle: "선행개발 권리화와 반복 확장 구조",
+        title: "사업구조 / 수익구조",
+        subtitle: "우리는 데이터센터 하나가 아니라 반복 확장 구조를 만듭니다",
         type: "사업구조",
         assetPath: "public/assets/slides/business-structure/",
         summary:
-          "SPV·SPC 구조를 기반으로 전력입지, 룰북, 후보지 검토체계, ESG 운영모델을 권리화하고 반복 가능한 데이터센터 선행개발 모델로 확장합니다.",
+          "여주 실증, 룰북/IP, 전력부지 자동검토툴, ESG 운영모델, SPV 구조의 반복 확장을 보여줍니다.",
         panelCount: 6,
       });
     }
@@ -585,7 +585,7 @@ function getCardPoints(item) {
       ["Track", "기술검토 및 제도정렬 진입"],
     ],
     app: [
-      ["Tool", "전력입지 검토체계"],
+      ["Tool", "전력부지 자동검토툴"],
       ["Filter", "전력·민원·도로·용도지역 조합"],
       ["Link", "외부 툴 링크로 연결"],
     ],
@@ -606,7 +606,7 @@ function getCardPoints(item) {
     ],
     closing: [
       ["Rulebook", "401MW 전력입지 룰북"],
-      ["Tool", "후보지 검토체계"],
+      ["Tool", "전력부지 자동검토툴"],
       ["ESG", "지역상생 ESG 운영모델"],
     ],
   };
@@ -618,25 +618,25 @@ function getCardPoints(item) {
 }
 
 function getCtaLabel(item) {
-  if (item.layout === "dogsim-esg") return "ESG·지역상생 모델 확인";
-  if (item.layout === "business") return "사업구조 확인";
-  if (item.layout === "closing") return "플랫폼 구성 확인";
+  if (item.layout === "dogsim-esg") return "ESG 모델 보기";
+  if (item.layout === "business") return "사업구조 보기";
+  if (item.layout === "closing") return "마무리 보기";
 
   const labels = {
-    opening: "플랫폼 소개 보기",
-    "webtoon-flow": "시각 브리핑 보기",
-    "grid-bottleneck": "입지 한계 확인",
-    "evidence-solution": "제도 해법 확인",
-    evidence: "근거자료 확인",
-    formula: "해법 구조 확인",
-    "yeoju-case": "여주 401MW 케이스 확인",
-    app: "전력입지 검토툴 확인",
-    esg: "ESG·지역상생 모델 확인",
-    business: "사업구조 확인",
-    closing: "플랫폼 구성 확인",
+    opening: "오프닝 보기",
+    "webtoon-flow": "1부 브리핑 보기",
+    "grid-bottleneck": "2부 브리핑 보기",
+    "evidence-solution": "3부 브리핑 보기",
+    evidence: "근거자료 보기",
+    formula: "해법 구조 보기",
+    "yeoju-case": "여주 자료 보기",
+    app: "전력부지 자동검토툴 보기",
+    esg: "ESG 모델 보기",
+    business: "사업구조 보기",
+    closing: "마무리 보기",
   };
 
-  return labels[item.layout] || "자세히 확인하기";
+  return labels[item.layout] || "자세히 보기";
 }
 
 function renderParagraphs(paragraphs) {
@@ -657,10 +657,10 @@ function renderWebtoonPanels(item) {
       ${Array.from({ length: item.panelCount }, (_, index) => {
         const step = padStep(index + 1);
         return `
-          <button class="viewer-panel webtoon-thumb" type="button" data-open-webtoon-panel="${index}" aria-label="${item.title} ${step} 자세히 확인">
+          <button class="viewer-panel webtoon-thumb" type="button" data-open-webtoon-panel="${index}" aria-label="${item.title} ${step} 브리핑 보기">
             <img class="viewer-image" src="${item.assetPath}${step}.png" alt="${item.title} ${step}" />
             <div class="viewer-placeholder"><span>${step}</span><strong>${item.title}</strong><small>${item.assetPath}${step}.png</small></div>
-            <span class="zoom-cue">자세히 확인</span>
+            <span class="zoom-cue">브리핑 보기</span>
           </button>
         `;
       }).join("")}
@@ -677,7 +677,7 @@ function renderEvidence(item) {
             <article class="viewer-card">
               <span>자료 ${padStep(index + 1)}</span>
               <h3>${title}</h3>
-              <p>핵심 메시지 중심으로 공개 홈페이지에서 빠르게 확인합니다.</p>
+              <p>핵심 메시지 중심으로 브리핑에서 빠르게 확인합니다.</p>
               <small>자료 위치 · ${item.assetPath}${file}</small>
             </article>
           `,
@@ -723,10 +723,10 @@ function renderAppContent(item) {
       <div class="viewer-copy">
         ${renderParagraphs(item.content)}
         <!-- TODO: 실제 전력부지 자동검토툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력입지 검토툴 확인</a>
+        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
       <div class="viewer-panel viewer-app-image-frame">
-        <img class="viewer-image" src="${item.visualPath}" alt="전력입지 후보지 검토 결과 요약 화면" />
+        <img class="viewer-image" src="${item.visualPath}" alt="전력부지 자동검토툴 결과 요약 화면" />
         <div class="viewer-placeholder">
           <span>Review Tool</span>
           <strong>분석 결과 요약 화면</strong>
@@ -786,10 +786,10 @@ function renderClosingContent(item) {
     <div class="viewer-closing">
       ${renderParagraphs(item.content)}
       <div class="hero-actions">
-        <a class="button primary" href="${buildContactMailto("collaboration")}">투자·협업 문의</a>
-        <a class="button secondary" href="${buildContactMailto("collaboration")}">사업협력 문의</a>
+        <a class="button primary" href="${buildContactMailto("collaboration")}">브리핑 문의</a>
+        <a class="button secondary" href="${buildContactMailto("collaboration")}">협력 검토 문의</a>
         <!-- TODO: 실제 전력부지 자동검토툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력입지 검토툴 확인</a>
+        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
     </div>
   `;
@@ -1081,12 +1081,12 @@ function renderWebtoonLightbox() {
   webtoonLightboxCount.textContent = `${padStep(selectedWebtoonPanelIndex + 1)} / ${padStep(webtoonCarouselImages.length)}`;
   webtoonLightboxPrev.disabled = isFirstPage;
   webtoonLightboxPrevBottom.disabled = isFirstPage;
-  webtoonLightboxPrev.setAttribute("aria-label", isFirstPage ? "첫 페이지입니다" : "이전 페이지");
-  webtoonLightboxPrev.setAttribute("title", isFirstPage ? "첫 페이지입니다" : "이전 페이지");
-  webtoonLightboxNext.setAttribute("aria-label", isLastPage ? "자료 닫기" : "다음 페이지");
-  webtoonLightboxNext.setAttribute("title", isLastPage ? "자료 닫기" : "다음 페이지");
+  webtoonLightboxPrev.setAttribute("aria-label", isFirstPage ? "첫 브리핑입니다" : "이전 브리핑");
+  webtoonLightboxPrev.setAttribute("title", isFirstPage ? "첫 브리핑입니다" : "이전 브리핑");
+  webtoonLightboxNext.setAttribute("aria-label", isLastPage ? "브리핑 닫기" : "다음 브리핑");
+  webtoonLightboxNext.setAttribute("title", isLastPage ? "브리핑 닫기" : "다음 브리핑");
   webtoonLightboxNextBottom.textContent = isLastPage ? "닫기" : "다음";
-  webtoonLightboxNextBottom.setAttribute("aria-label", isLastPage ? "자료 닫기" : "다음 페이지");
+  webtoonLightboxNextBottom.setAttribute("aria-label", isLastPage ? "브리핑 닫기" : "다음 브리핑");
   webtoonLightboxImage.classList.remove("is-missing");
   webtoonLightboxImage.src = image.src;
   webtoonLightboxImage.alt = image.alt;
@@ -1172,7 +1172,7 @@ function renderViewer() {
   viewerBody.innerHTML = renderItemBody(item);
   viewerBody.classList.toggle("image-focused", ["opening", "webtoon-flow", "grid-bottleneck", "evidence-solution", "yeoju-case", "dogsim-esg", "business", "closing"].includes(item.layout));
   viewerPrev.disabled = selectedItemIndex === 0;
-  viewerNext.textContent = selectedItemIndex === total - 1 ? "처음으로 돌아가기" : "다음 브리핑 보기";
+  viewerNext.textContent = "다음 자료 보기";
 
   viewerBody.scrollTop = 0;
   hydrateViewerAssets();
