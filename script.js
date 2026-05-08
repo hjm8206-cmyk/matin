@@ -1,4 +1,4 @@
-// TODO: 실제 내부 부지판단 툴 주소가 확정되면 이 값을 교체하세요.
+// TODO: 실제 전력부지 자동검토툴 주소가 확정되면 이 값을 교체하세요.
 const INTERNAL_TOOL_URL = "https://power-site-scout-os-new.vercel.app";
 const CONTACT_EMAIL = "windpks@gmail.com";
 const WEBTOON_MIN_ZOOM = 1;
@@ -175,14 +175,14 @@ const briefingItems = [
   {
     id: 7,
     step: "07",
-    title: "부지발굴 OS Beta",
-    subtitle: "하이퍼스케일 1차 부지 자동 선별 OS",
-    type: "OS Beta",
+    title: "전력부지 자동검토툴",
+    subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+    type: "검토툴",
     layout: "app",
     assetPath: INTERNAL_TOOL_URL,
-    summary: "후보지를 반복 발굴하기 위한 내부 OS는 외부 링크로만 연결합니다.",
+    summary: "전력부지 자동검토툴은 외부 링크로만 연결합니다.",
     content: [
-      "이 앱은 지도 장난감이 아니라, 전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 내부 발굴 OS입니다.",
+      "전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 전력부지 자동검토툴입니다.",
       "여주에서 룰이 정렬되면, 같은 기준으로 다음 후보지를 반복 발굴할 수 있습니다.",
     ],
   },
@@ -219,7 +219,7 @@ const briefingItems = [
     content: [
       "1호 여주 실증 케이스",
       "전력진입 룰북/IP",
-      "부지발굴 OS Beta",
+      "전력부지 자동검토툴",
       "지역상생/ESG 운영모델",
       "SPV 중심 권리 보유",
       "각 호수별 SPC/JV 확장",
@@ -234,7 +234,7 @@ const briefingItems = [
     type: "CTA",
     layout: "closing",
     assetPath: "public/assets/slides/closing-difference/",
-    summary: "전력입지 룰북, 내부 OS, 지역상생 ESG 운영모델을 통합한 당사의 차별점을 정리합니다.",
+    summary: "전력입지 룰북, 전력부지 자동검토툴, 지역상생 ESG 운영모델을 통합한 당사의 차별점을 정리합니다.",
     content: [
       "당사는 단순 데이터센터 개발사가 아니라, 전력입지 발굴과 제도 정렬, 선행개발, ESG 운영까지 통합적으로 수행하는 플랫폼입니다.",
     ],
@@ -287,16 +287,16 @@ function applyBriefingSequence() {
 
     if (item.layout === "app") {
       Object.assign(item, {
-        title: "부지발굴 OS Beta",
-        subtitle: "하이퍼스케일 1차 부지 자동 선별 OS",
-        type: "OS Beta",
+        title: "전력부지 자동검토툴",
+        subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+        type: "검토툴",
         assetPath: INTERNAL_TOOL_URL,
         visualPath: "public/assets/slides/app-demo/analysis-result.png",
         summary:
-          "부동산 입지 판단과 전력부지 전문성을 결합해 하이퍼스케일 데이터센터 후보지를 1차로 자동 선별하는 Beta OS입니다.",
+          "부동산 입지 판단과 전력부지 전문성을 결합해 하이퍼스케일 데이터센터 후보지를 1차로 자동 검토하는 툴입니다.",
         content: [
-          "이 OS는 부동산 조건과 전력 인입 가능성을 함께 보며 하이퍼스케일 데이터센터 후보지를 빠르게 1차 선별하기 위한 Beta 버전입니다.",
-          "페이지 안에 기능을 구현하지 않고, Beta 서비스는 별도 링크로 연결합니다.",
+          "전력부지 자동검토툴은 부동산 조건과 전력 인입 가능성을 함께 보며 하이퍼스케일 데이터센터 후보지를 빠르게 1차 검토하기 위한 도구입니다.",
+          "페이지 안에 기능을 구현하지 않고, 별도 링크로 연결합니다.",
         ],
       });
     }
@@ -585,7 +585,7 @@ function getCardPoints(item) {
       ["Track", "기술검토 및 제도정렬 진입"],
     ],
     app: [
-      ["OS", "내부 후보지 발굴"],
+      ["Tool", "전력부지 자동검토"],
       ["Filter", "전력·민원·도로·용도지역 조합"],
       ["Link", "외부 툴 링크로 연결"],
     ],
@@ -606,7 +606,7 @@ function getCardPoints(item) {
     ],
     closing: [
       ["Rulebook", "401MW 전력입지 룰북"],
-      ["OS", "전력부지 전문 내부앱 시스템"],
+      ["Tool", "전력부지 자동검토툴"],
       ["ESG", "지역상생 ESG 운영모델"],
     ],
   };
@@ -630,7 +630,7 @@ function getCtaLabel(item) {
     evidence: "근거자료 보기",
     formula: "해법 다이어그램 보기",
     "yeoju-case": "웹툰 4부 보기",
-    app: "OS Beta 보기",
+    app: "전력부지 자동검토툴 보기",
     esg: "ESG 모델 보기",
     business: "사업구조 보기",
     closing: "마무리 보기",
@@ -722,13 +722,13 @@ function renderAppContent(item) {
     <div class="viewer-two-column">
       <div class="viewer-copy">
         ${renderParagraphs(item.content)}
-        <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">부지발굴 OS Beta 열기</a>
+        <!-- TODO: 실제 전력부지 자동검토툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
+        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
       <div class="viewer-panel viewer-app-image-frame">
-        <img class="viewer-image" src="${item.visualPath}" alt="부지발굴 OS Beta 분석 결과 요약 화면" />
+        <img class="viewer-image" src="${item.visualPath}" alt="전력부지 자동검토툴 분석 결과 요약 화면" />
         <div class="viewer-placeholder">
-          <span>App Demo</span>
+          <span>Review Tool</span>
           <strong>분석 결과 요약 이미지가 들어갈 자리입니다</strong>
           <small>${item.visualPath}</small>
         </div>
@@ -788,8 +788,8 @@ function renderClosingContent(item) {
       <div class="hero-actions">
         <a class="button primary" href="${buildContactMailto("collaboration")}">브리핑 문의</a>
         <a class="button secondary" href="${buildContactMailto("collaboration")}">협력 검토 문의</a>
-        <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">부지발굴 OS Beta 열기</a>
+        <!-- TODO: 실제 전력부지 자동검토툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
+        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
     </div>
   `;
