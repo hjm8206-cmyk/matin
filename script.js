@@ -175,9 +175,9 @@ const briefingItems = [
   {
     id: 7,
     step: "07",
-    title: "앱 시연",
-    subtitle: "내부 후보지 발굴 OS",
-    type: "앱",
+    title: "부지발굴 OS Beta",
+    subtitle: "하이퍼스케일 1차 부지 자동 선별 OS",
+    type: "OS Beta",
     layout: "app",
     assetPath: INTERNAL_TOOL_URL,
     summary: "후보지를 반복 발굴하기 위한 내부 OS는 외부 링크로만 연결합니다.",
@@ -219,7 +219,7 @@ const briefingItems = [
     content: [
       "1호 여주 실증 케이스",
       "전력진입 룰북/IP",
-      "내부 후보지 발굴 앱",
+      "부지발굴 OS Beta",
       "지역상생/ESG 운영모델",
       "SPV 중심 권리 보유",
       "각 호수별 SPC/JV 확장",
@@ -287,16 +287,16 @@ function applyBriefingSequence() {
 
     if (item.layout === "app") {
       Object.assign(item, {
-        title: "앱 시연",
-        subtitle: "하이퍼스케일 1차 부지 자동 선별 툴",
-        type: "앱",
+        title: "부지발굴 OS Beta",
+        subtitle: "하이퍼스케일 1차 부지 자동 선별 OS",
+        type: "OS Beta",
         assetPath: INTERNAL_TOOL_URL,
         visualPath: "public/assets/slides/app-demo/analysis-result.png",
         summary:
-          "부동산 입지 판단과 전력부지 전문성을 결합해 하이퍼스케일 데이터센터 후보지를 1차로 자동 선별하는 내부 툴입니다.",
+          "부동산 입지 판단과 전력부지 전문성을 결합해 하이퍼스케일 데이터센터 후보지를 1차로 자동 선별하는 Beta OS입니다.",
         content: [
-          "이 툴은 부동산 조건과 전력 인입 가능성을 함께 보며 하이퍼스케일 데이터센터 후보지를 빠르게 1차 선별하기 위한 내부 OS입니다.",
-          "페이지 안에 기능을 구현하지 않고, 실제 시연은 별도 웹앱 링크로 연결합니다.",
+          "이 OS는 부동산 조건과 전력 인입 가능성을 함께 보며 하이퍼스케일 데이터센터 후보지를 빠르게 1차 선별하기 위한 Beta 버전입니다.",
+          "페이지 안에 기능을 구현하지 않고, Beta 서비스는 별도 링크로 연결합니다.",
         ],
       });
     }
@@ -630,7 +630,7 @@ function getCtaLabel(item) {
     evidence: "근거자료 보기",
     formula: "해법 다이어그램 보기",
     "yeoju-case": "웹툰 4부 보기",
-    app: "앱 시연 보기",
+    app: "OS Beta 보기",
     esg: "ESG 모델 보기",
     business: "사업구조 보기",
     closing: "마무리 보기",
@@ -723,10 +723,10 @@ function renderAppContent(item) {
       <div class="viewer-copy">
         ${renderParagraphs(item.content)}
         <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">내부 부지판단 툴 열기</a>
+        <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">부지발굴 OS Beta 열기</a>
       </div>
       <div class="viewer-panel viewer-app-image-frame">
-        <img class="viewer-image" src="${item.visualPath}" alt="앱 시연 분석 결과 요약 화면" />
+        <img class="viewer-image" src="${item.visualPath}" alt="부지발굴 OS Beta 분석 결과 요약 화면" />
         <div class="viewer-placeholder">
           <span>App Demo</span>
           <strong>분석 결과 요약 이미지가 들어갈 자리입니다</strong>
@@ -789,7 +789,7 @@ function renderClosingContent(item) {
         <a class="button primary" href="${buildContactMailto("collaboration")}">브리핑 문의</a>
         <a class="button secondary" href="${buildContactMailto("collaboration")}">협력 검토 문의</a>
         <!-- TODO: 실제 내부 부지판단 툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
-        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">내부 부지판단 툴 열기</a>
+        <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">부지발굴 OS Beta 열기</a>
       </div>
     </div>
   `;
