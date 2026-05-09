@@ -6,16 +6,16 @@ const WEBTOON_MAX_ZOOM = 4;
 
 const contactMailTemplates = {
   collaboration: {
-    subject: "데이터센터 플랫폼 협업 문의",
+    subject: "마틴 사업협력 문의",
     body: ["회사명:", "성함:", "연락처:", "협업 희망 분야:", "문의 내용:"].join("\n"),
   },
   investment: {
-    subject: "데이터센터 플랫폼 투자 문의",
+    subject: "마틴 투자·공동개발 검토 문의",
     body: ["회사명/기관명:", "성함:", "연락처:", "투자 검토 범위:", "문의 내용:"].join("\n"),
   },
   consulting: {
-    subject: "데이터센터 플랫폼 컨설팅 문의",
-    body: ["회사명:", "성함:", "연락처:", "검토 대상 부지/지역:", "필요한 컨설팅 범위:", "문의 내용:"].join("\n"),
+    subject: "마틴 후보지 검토 문의",
+    body: ["회사명:", "성함:", "연락처:", "검토 대상 부지/지역:", "필요한 검토 범위:", "문의 내용:"].join("\n"),
   },
 };
 
@@ -50,7 +50,7 @@ const openingSlides = [
   },
   {
     src: "/opening/08-platform-final-no-dog.png",
-    alt: "하이테크와 하이터치가 결합된 데이터센터 플랫폼 최종 비전 이미지",
+    alt: "하이테크와 하이터치가 결합된 마틴 데이터센터 선행개발 플랫폼 최종 비전 이미지",
   },
 ];
 
@@ -58,72 +58,67 @@ const briefingItems = [
   {
     id: 1,
     step: "01",
-    title: "오프닝 슬라이드",
-    subtitle: "AI 시대, 데이터센터는 새로운 사회 인프라다",
-    type: "영상",
+    title: "문제의식: AI 데이터센터의 병목은 검토 초입에 있습니다",
+    subtitle: "AI 확산은 데이터센터와 대용량 전력수요로 이어집니다",
+    type: "오프닝",
     layout: "opening",
     assetPath: "public/assets/webtoon/opening-briefing/",
-    summary: "AI가 왜 데이터센터라는 물리 인프라로 이어지는지 여는 자료입니다.",
+    summary:
+      "AI가 왜 데이터센터라는 물리 인프라로 이어지는지, 그리고 마틴이 왜 전력계통 검토 초입의 병목을 보고 있는지 여는 브리핑입니다.",
     content: [
-      "AI는 산업 운영의 기반 기술로 확장되고 있습니다.",
-      "공장, 자동차, 의료, 물류, 교육, 로봇, 도시 운영까지 모든 산업의 뒤편에서 데이터센터 수요가 커지고 있습니다.",
-      "AI를 움직이는 물리적 기반은 결국 데이터센터입니다.",
+      "AI는 검색창 안의 기술을 넘어 산업 운영의 기반으로 확장되고 있습니다.",
+      "그 확장은 서버, 전력, 냉각, 부지, 계통접속을 요구합니다.",
+      "마틴은 AI 데이터센터 개발의 앞단에서 전력입지와 검토 가능성을 함께 정리합니다.",
     ],
     highlight:
-      "우리는 데이터센터를 전기만 쓰는 시설이 아니라, 전력·입지·지역상생·ESG를 함께 설계하는 플랫폼으로 다시 정의합니다.",
+      "마틴은 데이터센터를 단순 건물이 아니라 전력입지, 전력계통 검토, 지역수용성, 사업구조가 결합된 선행개발 대상으로 봅니다.",
     panelCount: 5,
   },
   {
     id: 2,
     step: "02",
-    title: "1부: 왜 전력이 핵심인가",
-    subtitle: "AI 확산은 데이터센터 전력 병목으로 이어집니다",
+    title: "전력 병목: 대용량 부하는 입지의 기준을 바꿉니다",
+    subtitle: "AI 데이터센터의 핵심 조건은 전력입니다",
     type: "브리핑",
     layout: "webtoon-flow",
     assetPath: "public/assets/webtoon/power-bottleneck/",
-    summary: "AI, 데이터센터, 전력 병목, 송전축 전략의 연결을 시각적으로 설명합니다.",
+    summary: "AI 데이터센터 개발에서 전력이 왜 초기 병목이 되는지 설명합니다.",
     content: [
-      "AI가 커진다",
-      "데이터센터가 커진다",
-      "전력이 핵심 병목이 된다",
-      "기존 방식으로는 어렵다",
-      "송전축·부지제공·신설변전소가 핵심이다",
+      "AI 데이터센터는 높은 전력밀도와 대용량 부하를 요구합니다.",
+      "후보지는 면적과 가격만으로 판단할 수 없고, 전력축과 전력계통 검토 가능성을 함께 봐야 합니다.",
+      "전력 가능성이 입지의 우선순위와 사업화 속도를 결정합니다.",
     ],
     panelCount: 10,
   },
   {
     id: 3,
     step: "03",
-    title: "2부: 병목은 어디인가",
-    subtitle: "병목은 단순 부동산이 아니라 전력 인입 구조에 있습니다",
+    title: "초입 병목: 제도보다 관행이 먼저 막습니다",
+    subtitle: "제도는 열려 있지만, 전력계통 검토 초입에서 후보지가 멈춥니다",
     type: "브리핑",
     layout: "grid-bottleneck",
     assetPath: "public/assets/webtoon/grid-bottleneck/",
-    summary: "기존 변전소 잔여용량 관점의 한계와 송전선로 인입 구조를 정리합니다.",
+    summary: "대용량 데이터센터 후보지가 왜 법령 이전에 전력계통 검토의 초입 관행에서 막히는지 설명합니다.",
     content: [
-      "기존 변전소 잔여용량 중심 사고의 한계",
-      "대용량 데이터센터는 기존 배전급 접근으로 해결되지 않음",
-      "송전선로 인입 구조가 핵심",
-      "부지제공형 신설 변전소/개폐소 구조 필요",
-      "전력계통영향평가 기술검토 입력값 문제가 핵심",
+      "문제는 제도가 원천적으로 닫혀 있다는 것이 아닙니다.",
+      "대용량 전력수요 후보지는 전력계통 검토의 초입에서 기존 관행, 보수적 실무해석, 입력값 부족으로 사실상 멈추는 경우가 많습니다.",
+      "마틴은 후보지가 검토 테이블에 올라갈 수 있도록 전력입지, 부지제공, 신설 변전소·개폐소, 송전선로 연계 시나리오를 구조화합니다.",
     ],
     panelCount: 10,
   },
   {
     id: 4,
     step: "04",
-    title: "근거자료",
-    subtitle: "시장은 이미 전력 병목을 중심으로 움직이고 있습니다",
+    title: "계통·제도: 열린 제도를 검토 가능한 안건으로 바꾸는 법",
+    subtitle: "전력계통 검토 초입의 병목과 현실적 해법",
     type: "근거자료",
     layout: "evidence",
     assetPath: "public/assets/docs/evidence/",
-    summary: "시장·정책·제도 변화를 카드형 요약으로 정리합니다.",
+    summary: "제도는 열려 있지만 대용량 전력수요는 검토 초입에서 멈추기 쉽습니다. 마틴은 후보지를 전력계통 검토에 올릴 수 있는 입력값과 시나리오로 정리합니다.",
     content: [
-      "글로벌 데이터센터 전력수요 증가",
-      "국내 데이터센터 전력계통영향평가 병목",
-      "전력망 민간참여 법안 흐름",
-      "한전 6차 개정안 관련 기준 변화",
-      "전평 법령·지침 요약",
+      "제도는 데이터센터를 원천 차단하기보다 계통 안정성과 적정 배치를 요구합니다.",
+      "실제 병목은 후보지가 전력계통 검토의 초입에서 검토 가능한 안건으로 정리되지 못하는 데 있습니다.",
+      "현실적 해법은 기존 송전축 인근 후보지, 부지제공, 신설 변전소·개폐소, LILO 또는 분기 시나리오를 함께 검토하는 것입니다.",
     ],
     docs: [
       ["글로벌 데이터센터 전력수요 증가", "global-power-demand.pdf"],
@@ -136,12 +131,12 @@ const briefingItems = [
   {
     id: 5,
     step: "05",
-    title: "해법 구조",
-    subtitle: "현실적 진입 방식은 송전축·부지제공·신설 변전소 구조입니다",
+    title: "계통·제도: 열린 제도를 검토 가능한 안건으로 바꾸는 법",
+    subtitle: "전력계통 검토 초입의 병목과 현실적 해법",
     type: "다이어그램",
     layout: "formula",
     assetPath: "",
-    summary: "대용량 데이터센터 전력 진입 공식을 다이어그램으로 보여줍니다.",
+    summary: "기존 송전축 인근 후보지와 부지제공형 신설 변전소 구조를 검토 가능한 시나리오로 정리합니다.",
     content: [
       "기존 송전선로 인근 후보지",
       "부지제공",
@@ -153,21 +148,22 @@ const briefingItems = [
   {
     id: 6,
     step: "06",
-    title: "여주 1호 실증 케이스",
-    subtitle: "여주 1호 — 룰북이 실제 절차에 올라탄 실증 트랙",
-    type: "실증",
+    title: "여주 1호 선행개발 케이스",
+    subtitle: "전력계통 검토 초입 병목을 실제 트랙으로 정리한 앵커 케이스",
+    type: "앵커 케이스",
     layout: "yeoju-case",
     assetPath: "public/assets/webtoon/yeoju-case/",
-    summary: "기술검토 및 제도정렬 트랙에 진입한 여주 1호 케이스를 설명합니다.",
+    summary:
+      "여주 1호는 전력입지, 부지제공, 계통검토 입력값, 제도정렬, 지역수용성을 하나의 선행개발 트랙으로 검토하는 앵커 케이스입니다.",
     content: [
-      "여주 401MW 케이스는 단순한 토지 소개가 아닙니다.",
-      "345kV급 대용량 수전 가능성을 전제로, 부지제공형 신설 변전소·개폐소·송전선로 연계 시나리오를 실제 전력계통영향평가 기술검토 트랙에 올린 실증 케이스입니다.",
-      "최종 승인 전 단계이지만, 병목의 위치를 특정했고, 유상 기술검토와 주무부처 제도정렬 절차에 이미 진입했습니다.",
+      "여주 1호는 단순한 토지 소개가 아니라, 대용량 AI 데이터센터 후보지를 전력입지 관점에서 검토한 선행개발 케이스입니다.",
+      "345kV급 연계 가능성, 신설 변전소·개폐소, 송전선로 연계 시나리오, 민원·물·인허가·공사 난이도를 함께 점검합니다.",
+      "최종 확정이 아니라, 전력계통 검토 초입에서 멈추지 않도록 후보지를 검토 가능한 트랙으로 정리하는 단계입니다.",
     ],
     cards: [
-      "401MW급 대용량 전력 트랙",
-      "345kV LILO 검토 구조",
-      "부지 내 신설 변전소/개폐소 시나리오",
+      "401MW급 대용량 전력 검토 트랙",
+      "345kV 연계 가능성 검토",
+      "신설 변전소·개폐소 시나리오",
       "약 6만평 집적 구상",
       "전력·민원·물·인허가·공사 난이도 동시 검토",
     ],
@@ -175,68 +171,72 @@ const briefingItems = [
   {
     id: 7,
     step: "07",
-    title: "전력부지 자동검토툴",
-    subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+    title: "PowerSite Scout OS",
+    subtitle: "대용량 데이터센터 후보지 1차 자동검토툴",
     type: "검토툴",
     layout: "app",
     assetPath: INTERNAL_TOOL_URL,
-    summary: "전력부지 자동검토툴은 외부 링크로만 연결합니다.",
+    summary:
+      "전력, 민원, 도로, 용도지역, 면적, 정책입지, 규제요소를 조합해 데이터센터 후보지를 1차 분류하고, 전력계통 검토 초입에 필요한 입력값을 정리하는 마틴의 내부 검토 도구입니다.",
     content: [
-      "전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 전력부지 자동검토툴입니다.",
-      "여주에서 룰이 정렬되면, 같은 기준으로 다음 후보지를 반복 발굴할 수 있습니다.",
+      "PowerSite Scout OS는 대용량 데이터센터 후보지를 전력, 민원, 도로, 용도지역, 면적, 정책입지, 규제요소 기준으로 빠르게 분류하는 전력부지 자동검토툴입니다.",
+      "주소 검색부터 필지 분석, 점수표, 리포트까지 후보지 검토의 초기 판단을 구조화합니다.",
+      "최종 계통접속 가능성이나 인허가 판단을 대체하지 않고, 전문 검토로 넘길 후보지를 선별합니다.",
     ],
   },
   {
     id: 8,
     step: "08",
-    title: "독심프로젝트 / ESG",
-    subtitle: "독심프로젝트는 주변사업이 아니라 하이터치 운영모델입니다",
-    type: "ESG",
+    title: "독심프로젝트: 지역수용성 운영모델",
+    subtitle: "데이터센터 폐열과 지역 생태계를 연결하는 하이터치 모델",
+    type: "지역상생",
     layout: "dogsim-esg",
     assetPath: "public/assets/webtoon/dogsim-esg/",
-    summary: "데이터센터 폐열을 지역산업, 반려견 복지, 유기견 케어, 지역상생, ESG 운영모델로 연결하는 구조를 설명합니다.",
+    summary:
+      "독심프로젝트는 데이터센터 폐열, 지역산업, 반려견 복지, 유기견 케어, 지역상권을 연결해 데이터센터의 지역수용성을 높이는 운영모델입니다.",
     content: [
-      "데이터센터 폐열을 지역특산품 제조, 반려견 급식팩, 유기견 보호, 반려견 리조트, 지역 식당·카페·호프집 상생 구조와 연결합니다.",
-      "이 운영모델은 주민수용성·ESG·지역상생·비기술 경쟁력을 보강하는 하이터치 구조입니다.",
+      "데이터센터는 전력과 부지만으로 완성되지 않습니다.",
+      "폐열활용, 지역특산품, 반려견 복지, 유기견 케어, 지역 상권 연계는 데이터센터가 지역 안에서 받아들여질 수 있게 만드는 운영 장치입니다.",
+      "마틴은 하이테크 인프라와 하이터치 운영모델을 함께 설계합니다.",
     ],
     flow: [
-      ["폐열", "지역특산품"],
+      ["폐열", "지역특산품 제조"],
       ["폐열", "반려견 급식팩"],
       ["데이터센터", "유기견 케어"],
-      ["반려견 방문 수요", "지역 점주 상생"],
-      ["운영 기준", "비반려인 불편 저감"],
+      ["방문 수요", "지역 상권 연계"],
+      ["운영 기준", "생활 불편 저감"],
     ],
   },
   {
     id: 9,
     step: "09",
-    title: "사업구조 / 수익구조",
-    subtitle: "우리는 데이터센터 하나가 아니라 반복 확장 구조를 만듭니다",
+    title: "선행개발 사업구조",
+    subtitle: "룰북·자동검토툴·앵커 케이스·SPV 구조의 반복 확장",
     type: "사업구조",
     layout: "business",
     assetPath: "public/assets/slides/business-structure/",
-    summary: "여주 실증, 룰북/IP, 전력부지 자동검토툴, ESG 운영모델, SPV 구조의 반복 확장을 보여줍니다.",
+    summary:
+      "마틴은 개별 데이터센터 하나가 아니라 후보지 발굴, 전력계통 검토 초입 대응, 선행검토, 권리화, 공동개발로 이어지는 반복 가능한 사업구조를 만듭니다.",
     content: [
-      "여주 401MW 실증 케이스",
-      "전력진입 룰북/IP",
-      "전력부지 자동검토툴",
-      "지역상생/ESG 운영모델",
-      "SPV 중심 권리 보유",
-      "각 호수별 SPC/JV 확장",
-      "수익률 계산",
+      "여주 1호에서 전력입지 검토 기준과 선행개발 룰북을 정리합니다.",
+      "PowerSite Scout OS로 다음 후보지를 반복 발굴하고 1차 검토합니다.",
+      "각 후보지는 SPV, SPC, JV 구조를 통해 공동개발, 투자, 검토용역, 권리화 모델로 확장할 수 있습니다.",
     ],
   },
   {
     id: 10,
     step: "10",
-    title: "마무리 / 당사의 차별점",
-    subtitle: "선행과 끝단을 함께 책임지는 데이터센터 플랫폼",
-    type: "CTA",
+    title: "마틴의 제안",
+    subtitle: "전력계통 검토 초입부터 지역상생, 투자구조까지 함께 검토합니다",
+    type: "Partnership",
     layout: "closing",
     assetPath: "public/assets/slides/closing-difference/",
-    summary: "전력입지 룰북, 전력부지 자동검토툴, 지역상생 ESG 운영모델을 통합한 당사의 역량을 정리합니다.",
+    summary:
+      "마틴은 지자체, 전력·시공·운영 파트너, 투자자, 토지·개발 파트너와 함께 AI 데이터센터 선행개발을 검토합니다.",
     content: [
-      "당사는 단순 데이터센터 개발사가 아닙니다. 전력이 가능한 부지를 발굴하고, 제도·기술검토·지역수용성까지 통과 가능한 구조를 설계하는 데이터센터 플랫폼입니다.",
+      "마틴은 단순 데이터센터 개발사가 아닙니다.",
+      "전력이 가능한 후보지를 발굴하고, 전력계통 검토 초입에서 필요한 입력값과 시나리오를 정리해 검토 가능한 개발 트랙으로 연결합니다.",
+      "우리는 AI 데이터센터 선행개발을 함께 검토할 파트너를 찾고 있습니다.",
     ],
     panelCount: 1,
   },
@@ -245,16 +245,17 @@ const briefingItems = [
 const combinedEvidenceSolutionItem = {
   id: 4,
   step: "04",
-  title: "3부: 병목의 증거와 현실적 해법",
-  subtitle: "근거자료와 해법 구조",
-  type: "브리핑",
+  title: "계통·제도: 열린 제도를 검토 가능한 안건으로 바꾸는 법",
+  subtitle: "전력계통 검토 초입의 병목과 현실적 해법",
+  type: "검토체계",
   layout: "evidence-solution",
   assetPath: "public/assets/webtoon/evidence-solution/",
-  summary: "병목의 증거, 제도 변화, 통과율 현실, 송전망 지연, 기존 송전축 인근 부지제공형 신설변전소 해법을 한 흐름으로 설명합니다.",
+  summary:
+    "제도는 열려 있지만 대용량 전력수요는 검토 초입에서 멈추기 쉽습니다. 마틴은 후보지를 전력계통 검토에 올릴 수 있는 입력값과 시나리오로 정리합니다.",
   content: [
-    "제도 근거와 현실적 해법 구조",
-    "제도는 차단이 아니라 적정 배치로 움직이고 있습니다.",
-    "현실적 해법은 기존 송전축 인근 + 부지제공형 신설변전소 구조입니다.",
+    "제도는 데이터센터를 원천 차단하기보다 계통 안정성과 적정 배치를 요구합니다.",
+    "실제 병목은 후보지가 전력계통 검토의 초입에서 검토 가능한 안건으로 정리되지 못하는 데 있습니다.",
+    "현실적 해법은 기존 송전축 인근 후보지, 부지제공, 신설 변전소·개폐소, LILO 또는 분기 시나리오를 함께 검토하는 것입니다.",
   ],
   panelCount: 10,
 };
@@ -276,51 +277,51 @@ function applyBriefingSequence() {
 
     if (item.layout === "yeoju-case") {
       Object.assign(item, {
-        title: "여주 1호 실증 케이스",
-        subtitle: "여주 1호 — 룰북이 실제 절차에 올라탄 실증 트랙",
-        type: "실증",
+        title: "여주 1호 선행개발 케이스",
+        subtitle: "전력계통 검토 초입 병목을 실제 트랙으로 정리한 앵커 케이스",
+        type: "앵커 케이스",
         summary:
-          "기술검토 및 제도정렬 트랙에 진입한 여주 1호 케이스를 설명합니다.",
+          "여주 1호는 전력입지, 부지제공, 계통검토 입력값, 제도정렬, 지역수용성을 하나의 선행개발 트랙으로 검토하는 앵커 케이스입니다.",
         panelCount: 10,
       });
     }
 
     if (item.layout === "app") {
       Object.assign(item, {
-        title: "전력부지 자동검토툴",
-        subtitle: "하이퍼스케일 1차 전력부지 자동 검토",
+        title: "PowerSite Scout OS",
+        subtitle: "대용량 데이터센터 후보지 1차 자동검토툴",
         type: "검토툴",
         assetPath: INTERNAL_TOOL_URL,
         visualPath: "public/assets/slides/app-demo/analysis-result.png",
         summary:
-          "전력부지 자동검토툴은 외부 링크로만 연결합니다.",
+          "전력, 민원, 도로, 용도지역, 면적, 정책입지, 규제요소를 조합해 데이터센터 후보지를 1차 분류하고, 전력계통 검토 초입에 필요한 입력값을 정리하는 마틴의 내부 검토 도구입니다.",
         content: [
-          "전력·민원·도로·용도지역·면적·정책입지 가점을 조합해 데이터센터 후보지를 사전에 걸러내는 전력부지 자동검토툴입니다.",
-          "페이지 안에 기능을 구현하지 않고, 별도 링크로 연결합니다.",
+          "PowerSite Scout OS는 대용량 데이터센터 후보지를 전력, 민원, 도로, 용도지역, 면적, 정책입지, 규제요소 기준으로 빠르게 분류하는 전력부지 자동검토툴입니다.",
+          "최종 계통접속 가능성이나 인허가 판단을 대체하지 않고, 전문 검토로 넘길 후보지를 선별합니다.",
         ],
       });
     }
 
     if (item.layout === "dogsim-esg") {
       Object.assign(item, {
-        title: "독심프로젝트 / ESG",
-        subtitle: "독심프로젝트는 주변사업이 아니라 하이터치 운영모델입니다",
-        type: "ESG",
+        title: "독심프로젝트: 지역수용성 운영모델",
+        subtitle: "데이터센터 폐열과 지역 생태계를 연결하는 하이터치 모델",
+        type: "지역상생",
         assetPath: "public/assets/webtoon/dogsim-esg/",
         summary:
-          "데이터센터 폐열을 지역산업, 반려견 복지, 유기견 케어, 지역상생, ESG 운영모델로 연결하는 구조를 설명합니다.",
+          "독심프로젝트는 데이터센터 폐열, 지역산업, 반려견 복지, 유기견 케어, 지역상권을 연결해 데이터센터의 지역수용성을 높이는 운영모델입니다.",
         panelCount: 10,
       });
     }
 
     if (item.layout === "business") {
       Object.assign(item, {
-        title: "사업구조 / 수익구조",
-        subtitle: "우리는 데이터센터 하나가 아니라 반복 확장 구조를 만듭니다",
+        title: "선행개발 사업구조",
+        subtitle: "룰북·자동검토툴·앵커 케이스·SPV 구조의 반복 확장",
         type: "사업구조",
         assetPath: "public/assets/slides/business-structure/",
         summary:
-          "여주 실증, 룰북/IP, 전력부지 자동검토툴, ESG 운영모델, SPV 구조의 반복 확장을 보여줍니다.",
+          "마틴은 개별 데이터센터 하나가 아니라 후보지 발굴, 전력계통 검토 초입 대응, 선행검토, 권리화, 공동개발로 이어지는 반복 가능한 사업구조를 만듭니다.",
         panelCount: 6,
       });
     }
@@ -550,24 +551,24 @@ function renderCatalog() {
 function getCardPoints(item) {
   const pointsByLayout = {
     opening: [
-      ["Signal", "AI는 산업 뒤편에서 움직입니다"],
-      ["Infra", "물리적 기반은 데이터센터입니다"],
-      ["Frame", "전력·입지·ESG 플랫폼으로 재정의합니다"],
+      ["Signal", "AI는 물리 인프라를 요구합니다"],
+      ["Infra", "데이터센터와 전력이 핵심입니다"],
+      ["Frame", "마틴은 선행개발 트랙을 설계합니다"],
     ],
     "webtoon-flow": [
       ["Growth", "AI가 커지고 데이터센터가 커집니다"],
       ["Bottleneck", "전력이 핵심 병목이 됩니다"],
-      ["Entry", "송전축·부지제공·신설변전소가 핵심입니다"],
+      ["Entry", "검토 초입의 입력값이 중요합니다"],
     ],
     "grid-bottleneck": [
-      ["Limit", "잔여용량 중심 사고의 한계"],
-      ["Grid", "송전선로 인입 구조가 핵심"],
-      ["Input", "기술검토 입력값 설계"],
+      ["Practice", "제도보다 관행이 먼저 막습니다"],
+      ["Grid", "전력계통 검토 초입이 병목입니다"],
+      ["Scenario", "송전축·변전소 시나리오가 필요합니다"],
     ],
     "evidence-solution": [
-      ["Evidence", "병목의 증거와 제도 흐름"],
-      ["Reality", "통과율·송전망 지연의 현실"],
-      ["Solution", "기존 송전축 인근 + 부지제공형 신설변전소"],
+      ["Evidence", "병목은 제도보다 검토 초입에 있습니다"],
+      ["Solution", "후보지를 검토 가능한 안건으로 정리합니다"],
+      ["Track", "부지제공·신설 변전소 구조를 검토합니다"],
     ],
     evidence: [
       ["Market", "글로벌 전력수요 증가"],
@@ -580,19 +581,19 @@ function getCardPoints(item) {
       ["Link", "LILO 또는 분기 구조"],
     ],
     "yeoju-case": [
-      ["Power", "401MW급 대용량 전력 트랙"],
-      ["Grid", "345kV LILO 검토 구조"],
-      ["Track", "기술검토 및 제도정렬 진입"],
+      ["Anchor", "여주 1호 선행개발 케이스"],
+      ["Grid", "401MW급 전력 검토 트랙"],
+      ["Stage", "검토 가능한 사업 트랙으로 정리"],
     ],
     app: [
-      ["Tool", "전력부지 자동검토툴"],
-      ["Filter", "전력·민원·도로·용도지역 조합"],
-      ["Link", "외부 툴 링크로 연결"],
+      ["Tool", "PowerSite Scout OS"],
+      ["Screening", "후보지 1차 자동검토"],
+      ["Output", "점수표와 리포트로 구조화"],
     ],
     "dogsim-esg": [
-      ["Heat", "폐열 활용"],
-      ["DogSim", "반려견 복지와 유기견 케어"],
-      ["Local", "지역산업과 ESG 운영모델"],
+      ["Acceptance", "지역수용성 운영모델"],
+      ["Heat", "폐열과 지역산업 연결"],
+      ["Touch", "하이테크와 하이터치 결합"],
     ],
     esg: [
       ["Heat", "폐열 활용"],
@@ -600,14 +601,14 @@ function getCardPoints(item) {
       ["Local", "지역 점주 상생"],
     ],
     business: [
-      ["Proof", "1호 여주 실증"],
-      ["IP", "전력진입 룰북/IP"],
-      ["Scale", "SPV·SPC/JV 반복 확장"],
+      ["Structure", "선행개발 사업구조"],
+      ["Repeat", "후보지 발굴의 반복 확장"],
+      ["Partnership", "SPV·SPC·JV 협력 구조"],
     ],
     closing: [
-      ["Rulebook", "401MW 전력입지 룰북"],
-      ["Tool", "전력부지 자동검토툴"],
-      ["ESG", "지역상생 ESG 운영모델"],
+      ["MATIN", "전력계통 검토 초입을 구조화합니다"],
+      ["Partner", "투자·개발·지자체 협력"],
+      ["Next", "다음 후보지로 확장합니다"],
     ],
   };
 
@@ -618,22 +619,22 @@ function getCardPoints(item) {
 }
 
 function getCtaLabel(item) {
-  if (item.layout === "dogsim-esg") return "ESG 모델 보기";
+  if (item.layout === "dogsim-esg") return "지역상생 모델 보기";
   if (item.layout === "business") return "사업구조 보기";
-  if (item.layout === "closing") return "마무리 보기";
+  if (item.layout === "closing") return "파트너십 제안 보기";
 
   const labels = {
-    opening: "오프닝 보기",
-    "webtoon-flow": "1부 브리핑 보기",
-    "grid-bottleneck": "2부 브리핑 보기",
-    "evidence-solution": "3부 브리핑 보기",
+    opening: "브리핑 보기",
+    "webtoon-flow": "전력 병목 보기",
+    "grid-bottleneck": "초입 병목 보기",
+    "evidence-solution": "계통·제도 보기",
     evidence: "근거자료 보기",
     formula: "해법 구조 보기",
-    "yeoju-case": "여주 자료 보기",
-    app: "전력부지 자동검토툴 보기",
-    esg: "ESG 모델 보기",
+    "yeoju-case": "여주 1호 보기",
+    app: "PowerSite OS 보기",
+    esg: "지역상생 모델 보기",
     business: "사업구조 보기",
-    closing: "마무리 보기",
+    closing: "파트너십 제안 보기",
   };
 
   return labels[item.layout] || "자세히 보기";
@@ -726,9 +727,9 @@ function renderAppContent(item) {
         <a class="button primary" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
       <div class="viewer-panel viewer-app-image-frame">
-        <img class="viewer-image" src="${item.visualPath}" alt="전력부지 자동검토툴 결과 요약 화면" />
+        <img class="viewer-image" src="${item.visualPath}" alt="PowerSite Scout OS 결과 요약 화면" />
         <div class="viewer-placeholder">
-          <span>Review Tool</span>
+          <span>PowerSite Scout OS</span>
           <strong>분석 결과 요약 화면</strong>
           <small>${item.visualPath}</small>
         </div>
@@ -786,8 +787,8 @@ function renderClosingContent(item) {
     <div class="viewer-closing">
       ${renderParagraphs(item.content)}
       <div class="hero-actions">
-        <a class="button primary" href="${buildContactMailto("collaboration")}">브리핑 문의</a>
-        <a class="button secondary" href="${buildContactMailto("collaboration")}">협력 검토 문의</a>
+        <a class="button primary" href="${buildContactMailto("collaboration")}">사업협력 문의하기</a>
+        <a class="button secondary" href="${buildContactMailto("investment")}">투자·공동개발 문의하기</a>
         <!-- TODO: 실제 전력부지 자동검토툴 주소가 확정되면 INTERNAL_TOOL_URL 값을 교체하세요. -->
         <a class="button ghost" href="${INTERNAL_TOOL_URL}" target="_blank" rel="noreferrer">전력부지 자동검토툴 열기</a>
       </div>
@@ -1172,7 +1173,7 @@ function renderViewer() {
   viewerBody.innerHTML = renderItemBody(item);
   viewerBody.classList.toggle("image-focused", ["opening", "webtoon-flow", "grid-bottleneck", "evidence-solution", "yeoju-case", "dogsim-esg", "business", "closing"].includes(item.layout));
   viewerPrev.disabled = selectedItemIndex === 0;
-  viewerNext.textContent = "다음 자료 보기";
+  viewerNext.textContent = "다음 브리핑 보기";
 
   viewerBody.scrollTop = 0;
   hydrateViewerAssets();

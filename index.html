@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>AI Data Center Platform Briefing</title>
+    <title>마틴 | AI 데이터센터 선행개발 플랫폼</title>
     <meta
       name="description"
-      content="전력 병목, 여주 실증 트랙, 전력부지 자동검토툴, 지역상생 모델을 순서대로 보여주는 AI 데이터센터 플랫폼 브리핑"
+      content="마틴은 대용량 AI 데이터센터 후보지를 전력입지, 전력계통 검토, 부지조건, 제도, 지역수용성, 사업구조 관점에서 선행 검토하고, 검토 초입에서 멈추는 후보지를 개발·투자·협업 의사결정으로 연결하는 플랫폼입니다."
     />
     <link rel="preload" as="image" href="/opening/01-ai-beyond-search.png" />
     <link rel="preload" as="image" href="/opening/02-data-center-physical-base.png" />
@@ -24,7 +24,7 @@
     <header class="site-header" aria-label="상단 내비게이션">
       <a class="brand" href="#opening-intro" aria-label="오프닝으로 이동">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>AI DC Platform</span>
+        <span>MATIN</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
         <span></span>
@@ -33,20 +33,22 @@
         <span class="sr-only">메뉴 열기</span>
       </button>
       <nav id="primary-nav" class="primary-nav" aria-label="주요 메뉴">
-        <a href="#briefing-step-01">오프닝</a>
-        <a href="#briefing-step-02">AI DC 본질</a>
-        <a href="#briefing-step-04">계통 병목</a>
-        <a href="#briefing-step-05">제도 해법</a>
-        <a href="#briefing-step-06">부지 실증</a>
-        <a href="#briefing-step-07">전력부지 자동검토툴</a>
-        <a href="#briefing-step-08">선행개발 구조</a>
+        <a href="#briefing-step-01">문제의식</a>
+        <a href="#briefing-step-02">전력 병목</a>
+        <a href="#briefing-step-03">초입 병목</a>
+        <a href="#briefing-step-04">계통·제도</a>
+        <a href="#briefing-step-05">여주 1호</a>
+        <a href="#briefing-step-06">PowerSite OS</a>
+        <a href="#briefing-step-07">지역상생</a>
+        <a href="#briefing-step-08">사업구조</a>
+        <a href="#briefing-step-09">파트너십</a>
         <a href="#contact">문의</a>
       </nav>
     </header>
 
     <main id="page-content">
-      <section id="opening-intro" class="opening-intro" aria-label="AI 데이터센터 브리핑 도입부">
-        <div class="opening-frame" role="region" aria-label="AI 데이터센터 브리핑 도입 시퀀스" aria-roledescription="carousel">
+      <section id="opening-intro" class="opening-intro" aria-label="마틴 AI 데이터센터 브리핑 도입부">
+        <div class="opening-frame" role="region" aria-label="마틴 AI 데이터센터 브리핑 도입 시퀀스" aria-roledescription="carousel">
           <div id="opening-slides" class="opening-slides" aria-live="polite"></div>
 
           <button id="opening-prev" class="opening-nav prev" type="button" aria-label="이전 도입 화면">이전</button>
@@ -56,7 +58,7 @@
           <div class="opening-controls" aria-label="도입 시퀀스 진행 상태">
             <span id="opening-count" class="opening-count">1 / 8</span>
             <div id="opening-indicators" class="opening-indicators" role="tablist" aria-label="도입 화면 선택"></div>
-            <button id="opening-start" class="button primary opening-start" type="button" disabled aria-hidden="true">브리핑 시작</button>
+            <button id="opening-start" class="button primary opening-start" type="button" disabled aria-hidden="true">마틴 브리핑 시작</button>
           </div>
         </div>
       </section>
@@ -73,51 +75,53 @@
         </div>
 
         <div class="hero-content">
-          <p class="eyebrow">AI Data Center Platform Briefing</p>
-          <h1 id="hero-title">AI는 이제 검색창 안에만 있는 기술이 아닙니다.</h1>
+          <p class="eyebrow">MATIN Briefing</p>
+          <h1 id="hero-title">제도는 열려 있습니다. 병목은 전력계통 검토의 초입에 있습니다.</h1>
           <p class="hero-sub">
-            AI를 움직이는 물리적 기반은 결국 데이터센터입니다. 이 브리핑은 전력 병목, 여주 실증 트랙,
-            전력부지 자동검토툴, 지역상생 모델을 순서대로 보여줍니다.
+            마틴은 대용량 AI 데이터센터 후보지가 검토 테이블에 오르기 전 관행적으로 멈추는 지점을 전력입지,
+            계통 입력값, 부지제공 시나리오, 지역수용성, 사업구조 관점으로 정리합니다. 여주 1호 선행개발 트랙과
+            PowerSite Scout OS를 기반으로 후보지 발굴에서 투자·협업 검토까지 연결합니다.
           </p>
           <div class="hero-actions">
-            <button class="button primary" type="button" data-open-viewer="0">브리핑 시작하기</button>
+            <button class="button primary" type="button" data-open-viewer="0">마틴 브리핑 시작하기</button>
           </div>
         </div>
       </section>
 
-      <section id="briefing-list" class="briefing-list" aria-label="브리핑 자료 흐름">
+      <section id="briefing-list" class="briefing-list" aria-label="마틴 브리핑 자료 흐름">
         <div id="briefing-catalog" class="briefing-stack" aria-live="polite"></div>
       </section>
 
       <section id="contact" class="closing-section" aria-labelledby="closing-title">
         <div class="section-inner closing-inner">
-          <p class="section-kicker">Final Direction</p>
+          <p class="section-kicker">Partnership</p>
           <h2 id="closing-title">
-            데이터센터는 더 이상 선택 산업이 아니라
-            <span>국가의 미래를 지탱하는 필수 인프라입니다.</span>
+            AI 데이터센터 선행개발을
+            <span>함께 검토할 파트너를 찾습니다.</span>
           </h2>
           <p class="closing-copy">
-            우리는 기피시설이 아닌 환영받는 산업으로, 독점이 아닌 지역상생 플랫폼으로, ESG와 전력, 입지,
-            투자 구조를 함께 설계하는 대한민국 데이터센터의 국가 모범사례를 만들겠습니다.
+            마틴은 대용량 AI 데이터센터 후보지를 전력계통, 부지조건, 제도, 지역수용성, 사업구조 관점에서 함께
+            검토합니다. 제도 자체가 닫혀 있는 것이 아니라, 전력계통 검토의 초입에서 관행적으로 멈추는 후보지를
+            검토 가능한 선행개발 트랙으로 정리합니다.
           </p>
           <div class="contact-cards" aria-label="문의 유형">
             <article class="contact-card priority-card">
               <span>01</span>
-              <h3>협업 문의</h3>
-              <p>지자체, 전력, 시공, 운영, 지역 파트너와 함께 입지·전력·인허가·지역상생 모델을 검토합니다.</p>
-              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="collaboration">협업 문의</a>
+              <h3>사업협력 문의</h3>
+              <p>지자체, 전력, 토지, 시공, 운영 파트너와 함께 후보지, 전력계통, 인허가, 지역수용성, 공동개발 구조를 검토합니다.</p>
+              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="collaboration">사업협력 문의하기</a>
             </article>
             <article class="contact-card">
               <span>02</span>
-              <h3>투자 문의</h3>
-              <p>프로젝트 투자, PF, 전략적 투자, 공동개발 제안을 검토합니다.</p>
-              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="investment">투자 문의</a>
+              <h3>투자·공동개발 문의</h3>
+              <p>여주 1호 선행개발 트랙과 반복 가능한 후보지 검토 체계를 기반으로 프로젝트 투자, PF, 전략적 투자, 공동개발 구조를 논의합니다.</p>
+              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="investment">투자 검토 문의하기</a>
             </article>
             <article class="contact-card">
               <span>03</span>
-              <h3>컨설팅 문의</h3>
-              <p>데이터센터 입지 전략, 전력 확보, 인허가, 주민수용성, ESG 지역상생, 사업성 검토를 자문합니다.</p>
-              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="consulting">컨설팅 문의</a>
+              <h3>후보지 검토 문의</h3>
+              <p>대용량 데이터센터 후보지의 전력 접근성, 계통검토 입력값, 규제요소, 접도·용도지역, 민원 가능성, 사업화 가능성을 사전 검토합니다.</p>
+              <a class="button primary" href="mailto:windpks@gmail.com" data-mailto-type="consulting">후보지 검토 문의하기</a>
             </article>
           </div>
           <div class="contact-email-box" aria-label="이메일 직접 문의">
@@ -129,16 +133,16 @@
             <span id="copy-email-status" class="copy-email-status" role="status" aria-live="polite"></span>
           </div>
           <div class="closing-secondary-action">
-            <button class="button ghost" type="button" data-open-viewer="0">브리핑 다시 보기</button>
+            <button class="button ghost" type="button" data-open-viewer="0">마틴 브리핑 다시 보기</button>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>AI Data Center Platform Briefing</span>
-      <span>High-Tech × High-Touch Data Center Platform</span>
-      <span>Contact placeholder</span>
+      <span>MATIN</span>
+      <span>AI Data Center Pre-Development Platform</span>
+      <span>전력입지 · 전력계통 검토 · PowerSite Scout OS · 지역수용성 · 사업구조</span>
     </footer>
 
     <section id="briefing-viewer" class="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title" aria-hidden="true">
@@ -157,9 +161,9 @@
         </div>
         <div id="viewer-body" class="viewer-body"></div>
         <footer class="viewer-footer">
-          <button id="viewer-prev" class="button secondary" type="button">이전 자료</button>
+          <button id="viewer-prev" class="button secondary" type="button">이전 브리핑</button>
           <button class="button ghost" type="button" data-close-viewer>닫기</button>
-          <button id="viewer-next" class="button primary" type="button">다음 자료 보기</button>
+          <button id="viewer-next" class="button primary" type="button">다음 브리핑 보기</button>
         </footer>
       </div>
     </section>
@@ -170,7 +174,7 @@
         <header class="webtoon-lightbox-header">
           <div>
             <span id="webtoon-lightbox-count" class="viewer-step">01 / 10</span>
-            <h2 id="webtoon-lightbox-title">브리핑 보기</h2>
+            <h2 id="webtoon-lightbox-title">마틴 브리핑 보기</h2>
           </div>
           <button class="viewer-close" type="button" data-close-webtoon-lightbox aria-label="브리핑 크게 보기 닫기">×</button>
         </header>
